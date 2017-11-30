@@ -5,19 +5,20 @@
 package simergy.core.system;
 
 import java.util.HashMap;
-
+import java.io.Serializable;
+import java.util.ArrayList;
 import simergy.core.patients.Patient;
 import simergy.core.patients.SeverityLevel;
-
-import java.util.ArrayList;
 
 /**
  * The Class PatientGenerator.
  * 
  * This class is used to generate patients of different severity levels
  */
-public class PatientGenerator {
+public class PatientGenerator implements Serializable{
 
+	private static final long serialVersionUID = -9180828970654076297L;
+	
 	private HashMap<SeverityLevel,Integer> nextPatients;
 	
 	/**

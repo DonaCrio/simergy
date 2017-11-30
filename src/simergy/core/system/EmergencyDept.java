@@ -25,10 +25,10 @@ public class EmergencyDept implements Serializable{
 	private static final long serialVersionUID = 6699762321132104984L;
 
 	private String name;
-	private transient ArrayList<Workflow> workflows;
-	private transient ArrayList<Patient> patients;
-	private transient TimeMachine clock;
-	private transient PatientGenerator generator;
+	private ArrayList<Workflow> workflows;
+	private ArrayList<Patient> patients;
+	private TimeMachine clock;
+	private PatientGenerator generator;
 	private HashMap<String,ArrayList<Resource>> resources;
 	
 	/**

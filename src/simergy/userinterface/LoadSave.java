@@ -5,34 +5,41 @@ import simergy.core.system.SimErgy;
 
 public class LoadSave {
 
-	public static void saveSys(SimErgy sys){
+	public static void saveSys(SimErgy sys, String fileName){
+		if(fileName.contentEquals("")){
+			fileName = "SimErgy";
+			System.out.println("Default name has been set : SimErgy");
+		}
 		try{
-			FileOutputStream fos = new FileOutputStream(System.getProperty("user.dir") + "/data/SimErgy.ser");
+			FileOutputStream fos = new FileOutputStream(System.getProperty("user.dir") + "/data/" + fileName + ".ser");
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 			oos.writeObject(sys);
 			oos.close();
 			fos.close();
-			System.out.println("System was saved without any issue.");
+			System.out.println(fileName + ".ser was saved without any issue in /data/" + fileName + ".ser");
 			
 		}catch(IOException e){
-			e.printStackTrace();
+			System.out.println("ERROR : Failed to save the system.");;
 		}
 	}
 	
-	public static SimErgy loadSys(){
+	public static SimErgy loadSys(String fileName){
 		SimErgy sys = null;
-		
+		if(fileName.contentEquals("")){
+			System.out.println("A brand new SimErgy system has been created !");
+			return new SimErgy();
+		}
 		try{
-			FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "/data/SimErgy.ser");
+			FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "/data/" + fileName + ".ser");
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			sys = (SimErgy)ois.readObject();
-			System.out.println("System was loaded without issue.");
+			System.out.println(fileName + ".ser was loaded without any issue.");
 			return sys;
 		}catch(IOException e){
-			System.out.println("There is no current save, a brand new SimErgy system has been created !\n");
+			System.out.println("ERROR : Save couldn't be loaded, a brand new SimErgy system has been created !\n");
 			return new SimErgy();
 		}catch(ClassNotFoundException e){
-			System.out.println("ClassNotFoundException, a brand new SimErgy system has been created !\n");
+			System.out.println("EClassNotFoundException, a brand new SimErgy system has been created !\n");
 			return new SimErgy();
 		}
 		

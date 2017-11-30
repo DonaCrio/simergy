@@ -3,6 +3,7 @@
  * 
  */
 package simergy.core.system;
+import java.io.Serializable;
 
 
 /**
@@ -12,8 +13,10 @@ package simergy.core.system;
  * This is a basic clock representing time by minute with an integer.
  */
 
-public class TimeMachine{
+public class TimeMachine implements Serializable{
 
+	private static final long serialVersionUID = -5999025266636515415L;
+	
 	private int time;
 	
 	/**
@@ -41,7 +44,7 @@ public class TimeMachine{
 		int day = (int)(time-r)/1440;
 		int minutes = r%60;
 		int hours = (int)(r-minutes)/60;
-		return "day" + day + ":" + hours + "h" + minutes; 
+		return "day " + day + ", " + (hours<10?"0"+hours:hours) + "h" + (minutes<10?"0"+minutes:minutes); 
 	}
 	
 	/**
