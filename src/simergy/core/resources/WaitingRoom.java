@@ -19,7 +19,7 @@ public class WaitingRoom extends Room{
 	/**
 	 * Instantiates a new waiting room.
 	 */
-	public WaitingRoom(){
-		super("Waiting Room n°" + Integer.toString(n++), "WAITINGROOM");
+	public WaitingRoom(int id){
+		super(id, "Waiting Room n°" + Integer.toString(n++), "WAITINGROOM");
 	}
 }

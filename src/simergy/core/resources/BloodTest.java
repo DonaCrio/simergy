@@ -23,8 +23,8 @@ public class BloodTest  extends HealthService{
 	/**
 	 * Instantiates a new blood test.
 	 */
-	public BloodTest(){
-		super("Blood Test service", "BLOODTEST", cost, new Uniform(15,90));
+	public BloodTest(int id){
+		super(id, "Blood Test service", "BLOODTEST", cost, new Uniform(15,90));
 	}
 	
 	/**

@@ -5,6 +5,7 @@ import java.util.Scanner;
 import java.util.StringTokenizer;
 import simergy.core.system.*;
 import simergy.core.patients.*;
+import simergy.core.resources.*;
 
 public class CommandLineUserInterface {
 
@@ -100,7 +101,16 @@ public class CommandLineUserInterface {
 				
 				
 			}else if(cmd.contentEquals("addRoom")){
-				
+				if(st.countTokens()==2){
+					EmergencyDept ed = sys.getEDs().get(st.nextToken());
+					Resource room = ed.getResourceFactory().getRessource(st.nextToken());
+					if(room!=null && ed!=null){
+						 ed.addResource(room);
+						 System.out.println(room.getName() + " was successfully added to " + ed.getName());
+					}
+				}else{
+					System.out.println("ERROR : Requires 2 arguments (<EDname>,<RoomType>)");
+				}
 			}else if(cmd.contentEquals("addRadioService")){
 				
 			}else if(cmd.contentEquals("addMRI")){
@@ -175,7 +185,9 @@ public class CommandLineUserInterface {
 			System.out.println("\n# createED <EDname> : creates an ED with given name.");
 			
 		}if(param.contentEquals("addRoom") || param.contentEquals("f") || param.contentEquals("ed")){
-			System.out.println("\n# addRoom <EDname>,<RoomType>,<RoomName> : adds a room of given type and name to an ED with given name.");
+			System.out.println("\n# addRoom <EDname>,<RoomType> : adds a room of given type to an ED with given name :\n"
+					+ "-boxRoom\n"
+					+ "-shockRoom");
 		
 		}if(param.contentEquals("addRadioService") || param.contentEquals("f") || param.contentEquals("ed")){
 			System.out.println("\n# addRadioService <EDname>,<DistType>,<DistParams> : adds a radiology service to an ED with given name.\n"
@@ -228,11 +240,18 @@ public class CommandLineUserInterface {
 		}
 		res += border + "\n"
 				+ "### Informations : " + name + " ###\n"
-				+ border + "\n";
-		res += "\n# Time : " + ed.getClock().computeTime() + "\n";
-		res += "\n# Patients :";
+				+ border;
+		res += "\n\n# Time : " + ed.getClock().computeTime();
+		res += "\n\n# Patients (" + ed.getPatients().size() + ") :";
 		for(Patient p : ed.getPatients()){
 			res += "\n### " + p;
+		}
+		res += "\n\n# Resources :";
+		for(String resourceType : ed.getResources().keySet()){
+			res += "\n### " + resourceType + " (" + ed.getResources().get(resourceType).size() + ") :";
+			for(Resource r : ed.getResources().get(resourceType)){
+				res += r.getName() + ", ";
+			}
 		}
 		return res;
 	}

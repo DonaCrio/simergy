@@ -23,8 +23,8 @@ public class EndEventTest {
 	@Test
 	public void PassIfRegistrationEndsCorrectly() {
 		EmergencyDept ed = new EmergencyDept("myED");
-		ed.addResource(new Nurse("Blanco", "Camille"));
-		ed.addResource(new Physician("Said","Sammy"));
+		ed.addResource(new Nurse(0, "Blanco", "Camille"));
+		ed.addResource(new Physician(1, "Said","Sammy"));
 		Workflow workflow = new Workflow(ed, new Patient(SeverityLevel.L5));
 		workflow.setCurrentEvent(new Registration(workflow));
 		try{

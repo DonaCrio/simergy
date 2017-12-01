@@ -17,7 +17,6 @@ import simergy.core.patients.Patient;
 public abstract class Resource implements Serializable{
 
 	static final long serialVersionUID = -2840494229767380108L;
-	private static int i = 0;
 	protected int id;
 	protected String name;
 	protected String type;
@@ -29,13 +28,13 @@ public abstract class Resource implements Serializable{
 	 * @param name the resource's name
 	 * @param type the resource's type
 	 */
-	public Resource(String name, String type){
+	public Resource(int id, String name, String type){
 		/**
 		 * Constructor used to instantiate subclasses
 		 * @param name
 		 * @param type
 		 */
-		this.id = i++;
+		this.id = id;
 		this.name = name;
 		this.type = type;
 		this.state = State.IDLE;
@@ -103,5 +102,13 @@ public State getState() {
 	 */
 	public String getType() {
 		return type;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 }

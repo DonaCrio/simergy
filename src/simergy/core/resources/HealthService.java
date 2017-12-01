@@ -28,8 +28,8 @@ public abstract class HealthService extends NonHumanResource{
 	 * @param cost the health service's cost
 	 * @param distribution the health service's distribution
 	 */
-	public HealthService(String name, String type, double cost, ProbabilityDistribution distribution){
-		super(name, type);
+	public HealthService(int id, String name, String type, double cost, ProbabilityDistribution distribution){
+		super(id, name, type);
 		this.waitingQueue = new ArrayList<Patient>();
 		this.setDistribution(distribution);
 	}

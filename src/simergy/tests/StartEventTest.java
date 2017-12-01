@@ -18,8 +18,8 @@ public class StartEventTest {
 	@Test
 	public void PassIfRegistrationStartsCorrectly() {
 		EmergencyDept ed = new EmergencyDept("myED");
-		ed.addResource(new Nurse("Blanco", "Camille"));
-		ed.addResource(new Physician("Said","Sammy"));
+		ed.addResource(new Nurse(0, "Blanco", "Camille"));
+		ed.addResource(new Physician(1, "Said","Sammy"));
 		Workflow workflow = new Workflow(ed, new Patient(SeverityLevel.L5));
 		workflow.setCurrentEvent(new Registration(workflow));
 		try{
@@ -33,7 +33,7 @@ public class StartEventTest {
 	public void PassIfAllErrorsAreThrownCorrectly() {
 		EmergencyDept ed = new EmergencyDept("myED");
 		Workflow workflow = new Workflow(ed, new Patient(SeverityLevel.L5));
-		ed.addResource(new Physician("Said","Sammy"));
+		ed.addResource(new Physician(0, "Said","Sammy"));
 		workflow.setCurrentEvent(new Registration(workflow));
 		try{
 			workflow.getCurrentEvent().startEvent();
@@ -45,8 +45,8 @@ public class StartEventTest {
 	@Test
 	public void PassIfNurseIsAvailable() {
 		EmergencyDept ed = new EmergencyDept("myED");
-		ed.addResource(new Nurse("Blanco", "Camille"));
-		ed.addResource(new Physician("Said","Sammy"));
+		ed.addResource(new Nurse(0, "Blanco", "Camille"));
+		ed.addResource(new Physician(1, "Said","Sammy"));
 		Workflow workflow = new Workflow(ed, new Patient(SeverityLevel.L5));
 		workflow.setCurrentEvent(new Registration(workflow));
 		assertTrue(workflow.getCurrentEvent().requirementsAllGood());

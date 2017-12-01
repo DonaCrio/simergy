@@ -20,8 +20,8 @@ public class ShockRoom extends Room{
 	/**
 	 * Instantiates a new shock room.
 	 */
-	public ShockRoom(){
-		super("Shock Room n°" + Integer.toString(n++), "SHOCKROOM");
+	public ShockRoom(int id){
+		super(id, "Shock Room n°" + Integer.toString(n++), "SHOCKROOM");
 		n++;
 	}
 }

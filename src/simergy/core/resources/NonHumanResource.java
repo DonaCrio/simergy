@@ -20,8 +20,8 @@ public abstract class NonHumanResource extends Resource{
 	 * @param name the resource's name
 	 * @param type the resource's type
 	 */
-	public NonHumanResource(String name, String type){
-		super(name, type);
+	public NonHumanResource(int id, String name, String type){
+		super(id, name, type);
 	}
 
 }

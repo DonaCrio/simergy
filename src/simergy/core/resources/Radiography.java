@@ -23,8 +23,8 @@ public class Radiography extends HealthService{
 	/**
 	 * Instantiates a new radiography.
 	 */
-	public Radiography(){
-		super("Radiography service", "RADIOGRAPHY", cost, new Uniform(10,20));
+	public Radiography(int id){
+		super(id, "Radiography service", "RADIOGRAPHY", cost, new Uniform(10,20));
 	}
 	
 	/**

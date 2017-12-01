@@ -13,7 +13,7 @@ public abstract class HumanResource extends Resource{
 
 	private static final long serialVersionUID = 7853278297546382776L;
 	
-	private String surname;
+	protected String surname;
 	
 	/**
 	 * Instantiates a new human resource.
@@ -22,8 +22,8 @@ public abstract class HumanResource extends Resource{
 	 * @param type the human's type
 	 * @param surname the human's surname
 	 */
-	public HumanResource(String name, String type, String surname){
-		super(name, type);
+	public HumanResource(int id, String name, String type, String surname){
+		super(id, name, type);
 		this.surname = surname;
 	}
 

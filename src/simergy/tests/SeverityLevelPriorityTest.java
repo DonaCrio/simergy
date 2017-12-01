@@ -23,17 +23,18 @@ public class SeverityLevelPriorityTest {
 	@Test
 	public void PassIfPriorityPatientIsTreateadInsteadOfOtherPatient() {
 		EmergencyDept ed = new EmergencyDept("myED");
-		ed.addResource(new Physician("Said","Sammy"));
-		ed.addResource(new Nurse("Picard","Alex"));
-		ed.addResource(new Nurse("Ripoche","Arnaud"));
-		ed.addResource(new Nurse("Picard","Arnaud"));
-		ed.addResource(new Transporter("Cisneros","Hugo"));
-		ed.addResource(new BoxRoom());
-		ed.addResource(new BoxRoom());
-		ed.addResource(new ShockRoom());
-		ed.addResource(new BloodTest());
-		ed.addResource(new MRI());
-		ed.addResource(new Radiography());
+
+		ed.addResource(new Physician(0, "Said","Sammy"));
+		ed.addResource(new Nurse(4, "Picard","Alex"));
+		ed.addResource(new Nurse(5, "Ripoche","Arnaud"));
+		ed.addResource(new Nurse(6, "Picard","Arnaud"));
+		ed.addResource(new Transporter(11, "Plessis","Hugo"));
+		ed.addResource(new BoxRoom(14));
+		ed.addResource(new BoxRoom(15));
+		ed.addResource(new ShockRoom(16));
+		ed.addResource(new BloodTest(17));
+		ed.addResource(new MRI(18));
+		ed.addResource(new Radiography(19));
 		Patient patient1 = new Patient("Imbert", "Quentin", SeverityLevel.L5);
 		patient1.setHealthInsurance(HealthInsurance.SILVER);
 		ed.addWorkflow(new Workflow(ed,patient1));

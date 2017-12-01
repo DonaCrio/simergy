@@ -29,6 +29,9 @@ public class LoadSave {
 			System.out.println("A brand new SimErgy system has been created !");
 			return new SimErgy();
 		}
+		if(fileName.substring(fileName.length()-4,fileName.length()).equalsIgnoreCase(".SER")){
+			fileName = fileName.substring(0,fileName.length()-4);
+		}
 		try{
 			FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "/data/" + fileName + ".ser");
 			ObjectInputStream ois = new ObjectInputStream(fis);

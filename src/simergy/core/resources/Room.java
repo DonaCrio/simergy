@@ -20,8 +20,8 @@ public abstract class Room extends NonHumanResource{
 	 * @param name the room's name
 	 * @param type the room's type
 	 */
-	public Room(String name, String type){
-		super(name, type);
+	public Room(int id, String name, String type){
+		super(id, name, type);
 	}
 
 }

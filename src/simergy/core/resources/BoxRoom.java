@@ -19,7 +19,7 @@ public class BoxRoom extends Room{
 	/**
 	 * Instantiates a new box room.
 	 */
-	public BoxRoom(){
-		super("Box Room n°" + Integer.toString(n++), "BOXROOM");
+	public BoxRoom(int id){
+		super(id, "Box Room n°" + Integer.toString(n++), "BOXROOM");
 	}
 }

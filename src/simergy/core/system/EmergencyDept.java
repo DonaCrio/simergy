@@ -30,6 +30,7 @@ public class EmergencyDept implements Serializable{
 	private TimeMachine clock;
 	private PatientGenerator generator;
 	private HashMap<String,ArrayList<Resource>> resources;
+	private ResourceFactory resourceFactory;
 	
 	/**
 	 * Instantiates a new emergency department.
@@ -47,6 +48,7 @@ public class EmergencyDept implements Serializable{
 		this.clock = new TimeMachine();
 		this.generator = new PatientGenerator();
 		this.resources = generateResources();
+		this.resourceFactory = new ResourceFactory();
 	}
 	
 	/**
@@ -254,6 +256,10 @@ public TimeMachine getClock(){
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public ResourceFactory getResourceFactory() {
+		return resourceFactory;
 	}
 	
 }

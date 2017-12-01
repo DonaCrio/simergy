@@ -31,11 +31,25 @@ public class Physician extends HumanResource{
 	 * @param name the physician's name
 	 * @param surname the physician's surname
 	 */
-	public Physician(String name, String surname) {
-		super(name, "PHYSICIAN", surname);
+	public Physician(int id, String name, String surname) {
+		super(id, name, "PHYSICIAN", surname);
 		this.overseenPatients = new ArrayList<Patient>();
 		this.treatedPatients = new ArrayList<Patient>();
 		this.toBeSeenPatients = new ArrayList<Patient>();
+	}
+	
+	/**
+	 * Instantiates a new physician.
+	 *
+	 * Both name and surname are set to "physicianN" where N is the id of the resource
+	 */
+	public Physician(int id) {
+		super(id, "", "PHYSICIAN", "");
+		this.overseenPatients = new ArrayList<Patient>();
+		this.treatedPatients = new ArrayList<Patient>();
+		this.toBeSeenPatients = new ArrayList<Patient>();
+		this.name = "physi" + this.id;
+		this.surname = "physi" + this.id;
 	}
 	
 	/**
