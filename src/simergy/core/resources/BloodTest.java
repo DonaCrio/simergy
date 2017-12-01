@@ -24,7 +24,7 @@ public class BloodTest  extends HealthService{
 	 * Instantiates a new blood test.
 	 */
 	public BloodTest(int id){
-		super(id, "Blood Test service", "BLOODTEST", cost, new Uniform(15,90));
+		super(id, "Blood Test service n°" + Integer.toString(id), "BLOODTEST", cost, new Uniform(15,90));
 	}
 	
 	/**

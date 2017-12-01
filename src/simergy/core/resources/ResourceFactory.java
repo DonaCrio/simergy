@@ -10,7 +10,7 @@ public class ResourceFactory implements Serializable{
 
 	private static final long serialVersionUID = 1395870175966825284L;
 
-	private static int i = 0;
+	private int i = 0;
 	
 	public Resource getRessource(String resourceType){
 		if(resourceType == null){

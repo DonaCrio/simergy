@@ -10,6 +10,9 @@ public class LoadSave {
 			fileName = "SimErgy";
 			System.out.println("Default name has been set : SimErgy");
 		}
+		if(fileName.length()>4 && fileName.substring(fileName.length()-4,fileName.length()).equalsIgnoreCase(".SER")){
+			fileName = fileName.substring(0,fileName.length()-4);
+		}
 		try{
 			FileOutputStream fos = new FileOutputStream(System.getProperty("user.dir") + "/data/" + fileName + ".ser");
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -29,7 +32,7 @@ public class LoadSave {
 			System.out.println("A brand new SimErgy system has been created !");
 			return new SimErgy();
 		}
-		if(fileName.substring(fileName.length()-4,fileName.length()).equalsIgnoreCase(".SER")){
+		if(fileName.length()>4 && fileName.substring(fileName.length()-4,fileName.length()).equalsIgnoreCase(".SER")){
 			fileName = fileName.substring(0,fileName.length()-4);
 		}
 		try{

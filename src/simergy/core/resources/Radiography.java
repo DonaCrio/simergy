@@ -24,7 +24,7 @@ public class Radiography extends HealthService{
 	 * Instantiates a new radiography.
 	 */
 	public Radiography(int id){
-		super(id, "Radiography service", "RADIOGRAPHY", cost, new Uniform(10,20));
+		super(id, "Radiography service n°" + Integer.toString(id), "RADIOGRAPHY", cost, new Uniform(10,20));
 	}
 	
 	/**

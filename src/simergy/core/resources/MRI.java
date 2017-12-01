@@ -25,7 +25,7 @@ public class MRI extends HealthService{
 	 * Instantiates a new MRI.
 	 */
 	public MRI(int id){
-		super(id, "MRI service", "MRI", cost, new Uniform(30,70));
+		super(id, "MRI service n°" + Integer.toString(id), "MRI", cost, new Uniform(30,70));
 	}
 	
 	/**

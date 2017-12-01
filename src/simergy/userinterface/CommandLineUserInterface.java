@@ -1,6 +1,7 @@
 package simergy.userinterface;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 import simergy.core.system.*;
@@ -26,7 +27,7 @@ public class CommandLineUserInterface {
 				+ "##### SIMERGY #####\n"
 				+ "###################");
 		System.out.println("\nWelcome to Simergy.\n"
-				+ "This tool emulate an emergency department."
+				+ "This tool emulates an emergency department."
 				+ "\n\nWe strongly advice you to read the help by typing 'help' to get started.");
 		
 		while(run){
@@ -103,19 +104,115 @@ public class CommandLineUserInterface {
 			}else if(cmd.contentEquals("addRoom")){
 				if(st.countTokens()==2){
 					EmergencyDept ed = sys.getEDs().get(st.nextToken());
-					Resource room = ed.getResourceFactory().getRessource(st.nextToken());
-					if(room!=null && ed!=null){
-						 ed.addResource(room);
-						 System.out.println(room.getName() + " was successfully added to " + ed.getName());
+					if(ed!=null){	
+						Resource room = ed.getResourceFactory().getRessource(st.nextToken());
+						if(room!=null){
+							 ed.addResource(room);
+							 System.out.println(room.getName() + " was successfully added to " + ed.getName());
+						}
 					}
 				}else{
 					System.out.println("ERROR : Requires 2 arguments (<EDname>,<RoomType>)");
 				}
+				
 			}else if(cmd.contentEquals("addRadioService")){
+				if(st.countTokens()==1){
+					EmergencyDept ed = sys.getEDs().get(st.nextToken());
+					if(ed!=null){
+						Resource service = ed.getResourceFactory().getRessource("RADIOGRAPHY");
+						ed.addResource(service);
+						System.out.println(service.getName() + " was successfully added to " + ed.getName() + ".\n"
+								+ "Distribution was set Uniform(10,20)");
+					}
+				}else if(st.countTokens()>=3){
+					EmergencyDept ed = sys.getEDs().get(st.nextToken());
+					if(ed!=null){
+						Resource service = ed.getResourceFactory().getRessource("RADIOGRAPHY");
+						String type = st.nextToken();
+						ArrayList<Double> params = new ArrayList<Double>();
+						try{
+							for(int i=0;i<st.countTokens();i++){
+								params.add(Double.parseDouble(st.nextToken()));
+							}
+						}catch(NumberFormatException e){
+							System.out.println("ERROR : <DistParams> must be integers or doubles.");
+						}
+						
+						boolean done = ((HealthService)service).createDistribution(type,params);
+						ed.addResource(service);
+						System.out.println(service.getName() + " was successfully added to " + ed.getName() 
+							+ (done?" with the given distribution":" but the distribution's informations were wrong.\n"
+									+ "Distribution was set Uniform(10,20)"));
+					}
+				}else{
+					System.out.println("ERROR : Requires 1 or 3 arguments (<EDname>,<DistType>,<DistParams>)");
+				}
 				
 			}else if(cmd.contentEquals("addMRI")){
+				if(st.countTokens()==1){
+					EmergencyDept ed = sys.getEDs().get(st.nextToken());
+					if(ed!=null){
+						Resource service = ed.getResourceFactory().getRessource("MRI");
+						ed.addResource(service);
+						System.out.println(service.getName() + " was successfully added to " + ed.getName() + ".\n"
+								+ "Distribution was set Uniform(30,70)");
+					}
+				}else if(st.countTokens()>=3){
+					EmergencyDept ed = sys.getEDs().get(st.nextToken());
+					if(ed!=null){
+						Resource service = ed.getResourceFactory().getRessource("MRI");
+						String type = st.nextToken();
+						ArrayList<Double> params = new ArrayList<Double>();
+						try{
+							for(int i=0;i<st.countTokens();i++){
+								params.add(Double.parseDouble(st.nextToken()));
+							}
+						}catch(NumberFormatException e){
+							System.out.println("ERROR : <DistParams> must be integers or doubles.");
+						}
+						
+						boolean done = ((HealthService)service).createDistribution(type,params);
+						ed.addResource(service);
+						System.out.println(service.getName() + " was successfully added to " + ed.getName() 
+							+ (done?" with the given distribution":" but the distribution's informations were wrong.\n"
+									+ "Distribution was set Uniform(30,70)"));
+					}
+				}else{
+					System.out.println("ERROR : Requires 1 or 3 arguments (<EDname>,<DistType>,<DistParams>)");
+				}
 				
 			}else if(cmd.contentEquals("addBloodTest")){
+				if(st.countTokens()==1){
+					EmergencyDept ed = sys.getEDs().get(st.nextToken());
+					if(ed!=null){
+						Resource service = ed.getResourceFactory().getRessource("BLOODTEST");
+						ed.addResource(service);
+						System.out.println(service.getName() + " was successfully added to " + ed.getName() + ".\n"
+								+ "Distribution was set Uniform(15,90)");
+					}
+				}else if(st.countTokens()>=3){
+					EmergencyDept ed = sys.getEDs().get(st.nextToken());
+					if(ed!=null){
+						Resource service = ed.getResourceFactory().getRessource("BLOODTEST");
+						String type = st.nextToken();
+						ArrayList<Double> params = new ArrayList<Double>();
+						try{
+							for(int i=0;i<st.countTokens();i++){
+								params.add(Double.parseDouble(st.nextToken()));
+							}
+						}catch(NumberFormatException e){
+							System.out.println("ERROR : <DistParams> must be integers or doubles.");
+						}
+						
+						boolean done = ((HealthService)service).createDistribution(type,params);
+						ed.addResource(service);
+						System.out.println(service.getName() + " was successfully added to " + ed.getName() 
+							+ (done?" with the given distribution":" but the distribution's informations were wrong.\n"
+									+ "Distribution was set Uniform(15,90)"));
+					}
+				}else{
+					System.out.println("ERROR : Requires 1 or 3 arguments (<EDname>,<DistType>,<DistParams>)");
+				}
 				
 			}else if(cmd.contentEquals("addNurse")){
 				
@@ -191,18 +288,27 @@ public class CommandLineUserInterface {
 		
 		}if(param.contentEquals("addRadioService") || param.contentEquals("f") || param.contentEquals("ed")){
 			System.out.println("\n# addRadioService <EDname>,<DistType>,<DistParams> : adds a radiology service to an ED with given name.\n"
-					+ "DistType, DistParams representing the probability distribution for the service time of the radiology.\n"
-					+ "See 'help distribution' for more informations.");
+					+ "DistType, DistParams representing the probability distribution for the service time of the radiology : \n"
+					+ "- uniform : <DistParams> = leftBound,rightbound\n"
+					+ "- exponential : <DistParams> = exponentialParam\n"
+					+ "- deterministic : <DistParams> = deterministicParam\n"
+					+ "<DistType> and <DistParams are not mandatory. If not specified, the distribution will be Uniform(10,20)");
 			
 		}if(param.contentEquals("addMRI") || param.contentEquals("f") || param.contentEquals("ed")){
 			System.out.println("\n# addMRI <EDname>,<DistType>,<DistParams> : adds a mri service to an ED with given name.\n"
-					+ "DistType, DistParams representing the probability distribution for the service time of the radiology.\n"
-					+ "See 'help distribution' for more informations.");
+					+ "DistType, DistParams representing the probability distribution for the service time of the mri : \n"
+					+ "- uniform : <DistParams> = leftBound,rightbound\n"
+					+ "- exponential : <DistParams> = exponentialParam\n"
+					+ "- deterministic : <DistParams> = deterministicParam\n"
+					+ "<DistType> and <DistParams are not mandatory. If not specified, the distribution will be Uniform(30,70)");
 			
 		}if(param.contentEquals("addBloodTest") || param.contentEquals("f") || param.contentEquals("ed")){
 			System.out.println("\n# addBloodTest <EDname>,<DistType>,<DistParams> : adds a blood test service to an ED with given name.\n"
-					+ "DistType, DistParams representing the probability distribution for the service time of the radiology.\n"
-					+ "See 'help distribution' for more informations.");
+					+ "DistType, DistParams representing the probability distribution for the service time of the blood test : \n"
+					+ "- uniform : <DistParams> = leftBound,rightbound\n"
+					+ "- exponential : <DistParams> = exponentialParam\n"
+					+ "- deterministic : <DistParams> = deterministicParam\n"
+					+ "<DistType> and <DistParams are not mandatory. If not specified, the distribution will be Uniform(15,90)");
 			
 		}if(param.contentEquals("addNurse") || param.contentEquals("f") || param.contentEquals("ed")){
 			
@@ -224,10 +330,8 @@ public class CommandLineUserInterface {
 			
 		}if(param.contentEquals("setPatientInsurance") || param.contentEquals("f") || param.contentEquals("ed")){
 			
-		}if(param.contentEquals("distribution") || param.contentEquals("f") || param.contentEquals("ed")){
-			
 		}if(param.contentEquals("display") || param.contentEquals("f") || param.contentEquals("ed")){
-			
+		
 		}
 	}
 	
@@ -248,7 +352,7 @@ public class CommandLineUserInterface {
 		}
 		res += "\n\n# Resources :";
 		for(String resourceType : ed.getResources().keySet()){
-			res += "\n### " + resourceType + " (" + ed.getResources().get(resourceType).size() + ") :";
+			res += "\n### " + resourceType + " (" + ed.getResources().get(resourceType).size() + ") : ";
 			for(Resource r : ed.getResources().get(resourceType)){
 				res += r.getName() + ", ";
 			}
