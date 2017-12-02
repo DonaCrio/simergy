@@ -7,6 +7,7 @@ import java.util.StringTokenizer;
 import simergy.core.system.*;
 import simergy.core.patients.*;
 import simergy.core.resources.*;
+import simergy.core.events.*;
 
 public class CommandLineUserInterface {
 
@@ -36,6 +37,7 @@ public class CommandLineUserInterface {
 			StringTokenizer st = new StringTokenizer(input, " ,");
 			String cmd = st.countTokens()==0?"":st.nextToken();
 			
+			
 			if(cmd.contentEquals("help")){
 				if(st.countTokens()==1){
 					help(st.nextToken());
@@ -43,8 +45,7 @@ public class CommandLineUserInterface {
 					help("");
 				}
 				
-				
-				
+						
 			}else if(cmd.contentEquals("save")){
 				if(st.countTokens()==1){
 					String name = st.nextToken();
@@ -78,13 +79,16 @@ public class CommandLineUserInterface {
 			}else if(cmd.contentEquals("listSaves")){
 				getFilesInCurrentDirectory(new File(System.getProperty("user.dir") + "/data/"));
 				
-			}else if(cmd.contentEquals("quit")){
+				
+			}else if(cmd.contentEquals("exit")){
 				System.out.println("Maybe you should save your system before exiting SimErgy...\n"
 						+ "Are you sure you want to exit Simergy ? (Type 'yes' to continue)");
 				System.out.print("\n>>> ");
 				Scanner confirm = new Scanner(System.in);
 				if(confirm.next().equalsIgnoreCase("yes")){
+					confirm.close();
 					System.out.println("Hope SimErgy has been useful ! See you next time !");
+					sc.close();
 					run = false;
 				}
 				
@@ -110,10 +114,13 @@ public class CommandLineUserInterface {
 							 ed.addResource(room);
 							 System.out.println(room.getName() + " was successfully added to " + ed.getName());
 						}
+					}else{
+						System.out.println("ERROR : This ED doesn't exists.");
 					}
 				}else{
 					System.out.println("ERROR : Requires 2 arguments (<EDname>,<RoomType>)");
 				}
+				
 				
 			}else if(cmd.contentEquals("addRadioService")){
 				if(st.countTokens()==1){
@@ -123,6 +130,8 @@ public class CommandLineUserInterface {
 						ed.addResource(service);
 						System.out.println(service.getName() + " was successfully added to " + ed.getName() + ".\n"
 								+ "Distribution was set Uniform(10,20)");
+					}else{
+						System.out.println("ERROR : This ED doesn't exists.");
 					}
 				}else if(st.countTokens()>=3){
 					EmergencyDept ed = sys.getEDs().get(st.nextToken());
@@ -143,10 +152,13 @@ public class CommandLineUserInterface {
 						System.out.println(service.getName() + " was successfully added to " + ed.getName() 
 							+ (done?" with the given distribution":" but the distribution's informations were wrong.\n"
 									+ "Distribution was set Uniform(10,20)"));
+					}else{
+						System.out.println("ERROR : This ED doesn't exists.");
 					}
 				}else{
-					System.out.println("ERROR : Requires 1 or 3 arguments (<EDname>,<DistType>,<DistParams>)");
+					System.out.println("ERROR : Requires 1 or 3 arguments (<EDname>,<DistType>,<DistParams>).");
 				}
+				
 				
 			}else if(cmd.contentEquals("addMRI")){
 				if(st.countTokens()==1){
@@ -156,6 +168,8 @@ public class CommandLineUserInterface {
 						ed.addResource(service);
 						System.out.println(service.getName() + " was successfully added to " + ed.getName() + ".\n"
 								+ "Distribution was set Uniform(30,70)");
+					}else{
+						System.out.println("ERROR : This ED doesn't exists.");
 					}
 				}else if(st.countTokens()>=3){
 					EmergencyDept ed = sys.getEDs().get(st.nextToken());
@@ -176,10 +190,13 @@ public class CommandLineUserInterface {
 						System.out.println(service.getName() + " was successfully added to " + ed.getName() 
 							+ (done?" with the given distribution":" but the distribution's informations were wrong.\n"
 									+ "Distribution was set Uniform(30,70)"));
+					}else{
+						System.out.println("ERROR : This ED doesn't exists.");
 					}
 				}else{
-					System.out.println("ERROR : Requires 1 or 3 arguments (<EDname>,<DistType>,<DistParams>)");
+					System.out.println("ERROR : Requires 1 or 3 arguments (<EDname>,<DistType>,<DistParams>).");
 				}
+				
 				
 			}else if(cmd.contentEquals("addBloodTest")){
 				if(st.countTokens()==1){
@@ -189,6 +206,8 @@ public class CommandLineUserInterface {
 						ed.addResource(service);
 						System.out.println(service.getName() + " was successfully added to " + ed.getName() + ".\n"
 								+ "Distribution was set Uniform(15,90)");
+					}else{
+						System.out.println("ERROR : This ED doesn't exists.");
 					}
 				}else if(st.countTokens()>=3){
 					EmergencyDept ed = sys.getEDs().get(st.nextToken());
@@ -209,30 +228,125 @@ public class CommandLineUserInterface {
 						System.out.println(service.getName() + " was successfully added to " + ed.getName() 
 							+ (done?" with the given distribution":" but the distribution's informations were wrong.\n"
 									+ "Distribution was set Uniform(15,90)"));
+					}else{
+						System.out.println("ERROR : This ED doesn't exists.");
 					}
 				}else{
-					System.out.println("ERROR : Requires 1 or 3 arguments (<EDname>,<DistType>,<DistParams>)");
+					System.out.println("ERROR : Requires 1 or 3 arguments (<EDname>,<DistType>,<DistParams>).");
 				}
 				
+				
 			}else if(cmd.contentEquals("addNurse")){
+				if(st.countTokens()==1){
+					EmergencyDept ed = sys.getEDs().get(st.nextToken());
+					if(ed!=null){
+						Resource nurse = ed.getResourceFactory().getRessource("NURSE");
+						ed.addResource(nurse);
+						System.out.println(nurse.getName() + " was successfully added to " + ed.getName() + ".");
+					}else{
+						System.out.println("ERROR : This ED doesn't exists.");
+					}
+				}else if(st.countTokens()==3){
+					EmergencyDept ed = sys.getEDs().get(st.nextToken());
+					if(ed!=null){
+						Resource nurse = ed.getResourceFactory().getRessource("NURSE");
+						String name = st.nextToken();
+						String surname = st.nextToken();
+						((HumanResource)nurse).setName(name);
+						((HumanResource)nurse).setSurname(surname);
+						ed.addResource(nurse);
+						System.out.println(nurse.getName() + " was successfully added to " + ed.getName() + ".");
+					}else{
+						System.out.println("ERROR : This ED doesn't exists.");
+					}
+				}else{
+					System.out.println("ERROR : Requires 1 or 3 arguments (<EDname>,<NurseName>,<NurseSurname>).");
+				}
+				
 				
 			}else if(cmd.contentEquals("addPhysi")){
+				if(st.countTokens()==1){
+					EmergencyDept ed = sys.getEDs().get(st.nextToken());
+					if(ed!=null){
+						Resource physi = ed.getResourceFactory().getRessource("PHYSICIAN");
+						ed.addResource(physi);
+						System.out.println(physi.getName() + " was successfully added to " + ed.getName() + ".");
+					}else{
+						System.out.println("ERROR : This ED doesn't exists.");
+					}
+				}else if(st.countTokens()==3){
+					EmergencyDept ed = sys.getEDs().get(st.nextToken());
+					if(ed!=null){
+						Resource physi = ed.getResourceFactory().getRessource("PHYSICIAN");
+						String name = st.nextToken();
+						String surname = st.nextToken();
+						((HumanResource)physi).setName(name);
+						((HumanResource)physi).setSurname(surname);
+						ed.addResource(physi);
+						System.out.println(physi.getName() + " was successfully added to " + ed.getName() + ".");
+					}else{
+						System.out.println("ERROR : This ED doesn't exists.");
+					}
+				}else{
+					System.out.println("ERROR : Requires 1 or 3 arguments (<EDname>,<PhysiName>,<PhysiSurname>).");
+				}
+				
 				
 			}else if(cmd.contentEquals("setL1arrivalDist")){
 				
+				
 			}else if(cmd.contentEquals("setL2arrivalDist")){
+				
 				
 			}else if(cmd.contentEquals("setL3arrivalDist")){
 				
+				
 			}else if(cmd.contentEquals("setL4arrivalDist")){
+				
 				
 			}else if(cmd.contentEquals("setL5arrivalDist")){
 				
-			}else if(cmd.contentEquals("addPatient")){
 				
-			}else if(cmd.contentEquals("registerPatient")){
+			}else if(cmd.contentEquals("addPatient")){
+				if(st.countTokens()==5){
+					EmergencyDept ed = sys.getEDs().get(st.nextToken());
+					if(ed!=null){
+						String name = st.nextToken();
+						String surname = st.nextToken();
+						String severityLevel = st.nextToken();
+						String healthInsurance = st.nextToken();
+						Patient patient = new Patient(name,surname,severityLevel,healthInsurance);
+						ed.addWorkflow(new Workflow(ed, patient));
+						System.out.println(patient.getName() + " was successfully added to " + ed.getName() + ".");
+					}else{
+						System.out.println("ERROR : This ED doesn't exists.");
+					}
+				}else{
+					System.out.println("ERROR : Requires 5 arguments (<EDname>,<PatientName>,<PatientSurname>,<SeverityLevel>,<HealthInsurance>).");
+				}
+				
 				
 			}else if(cmd.contentEquals("setPatientInsurance")){
+				if(st.countTokens()==3){
+					EmergencyDept ed = sys.getEDs().get(st.nextToken());
+					if(ed!=null){
+						try{
+							int id = Integer.parseInt(st.nextToken());
+							Patient p = ed.getPatients().get(id);
+							String healthInsurance = st.nextToken();
+							p.setHealthInsurance(HealthInsurance.getHealthInsurance(healthInsurance));
+							System.out.println(p.getName() + "'s health insurance was successfully set");
+						}catch(NumberFormatException e){
+							System.out.println("ERROR : <PatientID> must be an integer.");
+						}catch(NullPointerException e){
+							System.out.println("ERROR : This Patient doesn't exists.");
+						}
+					}else{
+						System.out.println("ERROR : This ED doesn't exists.");
+					}
+				}else{
+					System.out.println("ERROR : Requires 3 arguments (<EDname>,<PatientID>,<HealthInsurance>).");
+				}
 				
 			}else if(cmd.contentEquals("display")){
 				if(st.countTokens()==1){
@@ -275,8 +389,8 @@ public class CommandLineUserInterface {
 		}if(param.contentEquals("listSaves")|| param.contentEquals("f") || param.contentEquals("s")){
 			System.out.println("\n# listSaves : displays the saves found in /data.");
 			
-		}if(param.contentEquals("quit") || param.contentEquals("f") || param.contentEquals("s")){
-			System.out.println("\n# quit : quits SimErgy.");
+		}if(param.contentEquals("exit") || param.contentEquals("f") || param.contentEquals("s")){
+			System.out.println("\n# exit : exitss SimErgy.");
 			
 		}if(param.contentEquals("createED") || param.contentEquals("f") || param.contentEquals("ed")){
 			System.out.println("\n# createED <EDname> : creates an ED with given name.");
@@ -288,32 +402,36 @@ public class CommandLineUserInterface {
 		
 		}if(param.contentEquals("addRadioService") || param.contentEquals("f") || param.contentEquals("ed")){
 			System.out.println("\n# addRadioService <EDname>,<DistType>,<DistParams> : adds a radiology service to an ED with given name.\n"
-					+ "DistType, DistParams representing the probability distribution for the service time of the radiology : \n"
+					+ "<DistType>, <DistParams> representing the probability distribution for the service time of the radiology : \n"
 					+ "- uniform : <DistParams> = leftBound,rightbound\n"
 					+ "- exponential : <DistParams> = exponentialParam\n"
 					+ "- deterministic : <DistParams> = deterministicParam\n"
-					+ "<DistType> and <DistParams are not mandatory. If not specified, the distribution will be Uniform(10,20)");
+					+ "<DistType> and <DistParams> are not mandatory. If not specified, the distribution will be Uniform(10,20)");
 			
 		}if(param.contentEquals("addMRI") || param.contentEquals("f") || param.contentEquals("ed")){
 			System.out.println("\n# addMRI <EDname>,<DistType>,<DistParams> : adds a mri service to an ED with given name.\n"
-					+ "DistType, DistParams representing the probability distribution for the service time of the mri : \n"
+					+ "<DistType>, <DistParams> representing the probability distribution for the service time of the mri : \n"
 					+ "- uniform : <DistParams> = leftBound,rightbound\n"
 					+ "- exponential : <DistParams> = exponentialParam\n"
 					+ "- deterministic : <DistParams> = deterministicParam\n"
-					+ "<DistType> and <DistParams are not mandatory. If not specified, the distribution will be Uniform(30,70)");
+					+ "<DistType> and <DistParams> are not mandatory. If not specified, the distribution will be Uniform(30,70)");
 			
 		}if(param.contentEquals("addBloodTest") || param.contentEquals("f") || param.contentEquals("ed")){
 			System.out.println("\n# addBloodTest <EDname>,<DistType>,<DistParams> : adds a blood test service to an ED with given name.\n"
-					+ "DistType, DistParams representing the probability distribution for the service time of the blood test : \n"
+					+ "<DistType>, <DistParams> representing the probability distribution for the service time of the blood test : \n"
 					+ "- uniform : <DistParams> = leftBound,rightbound\n"
 					+ "- exponential : <DistParams> = exponentialParam\n"
 					+ "- deterministic : <DistParams> = deterministicParam\n"
-					+ "<DistType> and <DistParams are not mandatory. If not specified, the distribution will be Uniform(15,90)");
+					+ "<DistType> and <DistParams> are not mandatory. If not specified, the distribution will be Uniform(15,90)");
 			
 		}if(param.contentEquals("addNurse") || param.contentEquals("f") || param.contentEquals("ed")){
-			
+			System.out.println("addNurse <EDname>,<NurseName>,<NurseSurname> : adds a nurse with given name and surname to an ED with given name.\n"
+					+ "<NurseName> and <NurseSurname> are not mandatory. If not specified, the name and surname will be 'nurseN' where N is the nurse's ID");
+		
 		}if(param.contentEquals("addPhysi") || param.contentEquals("f") || param.contentEquals("ed")){
-			
+			System.out.println("addPhysi <EDname>,<PhysiName>,<PhysiSurname> : adds a physician with given name and surname to an ED with given name.\n"
+					+ "<PhysiName> and <PhysiSurname> are not mandatory. If not specified, the name and surname will be 'physiN' where N is the physician's ID");
+		
 		}if(param.contentEquals("setL1arrivalDist") || param.contentEquals("f") || param.contentEquals("ed")){
 			
 		}if(param.contentEquals("setL2arrivalDist") || param.contentEquals("f") || param.contentEquals("ed")){
@@ -325,7 +443,10 @@ public class CommandLineUserInterface {
 		}if(param.contentEquals("setL5arrivalDist") || param.contentEquals("f") || param.contentEquals("ed")){
 			
 		}if(param.contentEquals("addPatient") || param.contentEquals("f") || param.contentEquals("ed")){
-			
+			System.out.println("\n# addPatient <EDname>,<PatientName>,<PatientSurname>,<SeverityLevel>,<HealthInsurance> : registers a patient with given name and surname to an ED with given name.\n"
+					+ "<SeverityLevel> representing the level of severity of the patient. It has to be : 'L1', 'L2', 'L3', 'L4' or 'L5'.\n"
+					+ "<HealthInsurance> representing the health insurance of the patient. It has to be : 'GOLD', 'SILVER', 'NONE'.");
+		
 		}if(param.contentEquals("registerPatient") || param.contentEquals("f") || param.contentEquals("ed")){
 			
 		}if(param.contentEquals("setPatientInsurance") || param.contentEquals("f") || param.contentEquals("ed")){

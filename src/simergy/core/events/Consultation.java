@@ -15,6 +15,7 @@ import simergy.exceptions.ResourceAssignationFailedException;
  */
 public class Consultation extends Event{
 	
+	private static final long serialVersionUID = -7565936593046692899L;
 	private boolean secondTime = false;
 	/**
 	 * Instantiates a new consultation event.

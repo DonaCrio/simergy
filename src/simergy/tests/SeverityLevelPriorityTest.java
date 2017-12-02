@@ -35,7 +35,7 @@ public class SeverityLevelPriorityTest {
 		ed.addResource(new BloodTest(17));
 		ed.addResource(new MRI(18));
 		ed.addResource(new Radiography(19));
-		Patient patient1 = new Patient("Imbert", "Quentin", SeverityLevel.L5);
+		Patient patient1 = new Patient(SeverityLevel.L5);
 		patient1.setHealthInsurance(HealthInsurance.SILVER);
 		ed.addWorkflow(new Workflow(ed,patient1));
 		System.out.println("Before priority patient'arrival :");
@@ -47,7 +47,7 @@ public class SeverityLevelPriorityTest {
 			}
 		}
 		
-		Patient patient2 = new Patient("Suquet", "Victor", SeverityLevel.L1);
+		Patient patient2 = new Patient(SeverityLevel.L1);
 		patient2.setHealthInsurance(HealthInsurance.GOLD);
 		ed.addWorkflow(new Workflow(ed,patient2));
 		assertTrue(ed.getWorkflows().get(0).getPatient()==patient2);

@@ -5,6 +5,9 @@
 package simergy.core.patients;
 
 import simergy.core.resources.*;
+
+import java.io.Serializable;
+
 import simergy.core.events.Workflow;
 
 /**
@@ -15,7 +18,9 @@ import simergy.core.events.Workflow;
  * Contains all the  personal informations about a patient.
  *  @see simergy.events.Workflow to get informations about patient's stay in the ed.
  */
-public class Patient {
+public class Patient implements Serializable{
+
+	private static final long serialVersionUID = 3751205721606981449L;
 
 	/** The integer used to generate unique ids. */
 	private static int i=0;
@@ -51,15 +56,48 @@ public class Patient {
 	 * @param name the patient's name
 	 * @param surname the patient's surname
 	 * @param severityLevel the patient's severity level
+	 * @param healthInsurance the patient's health insurance
 	 */
-	public Patient(String name, String surname, SeverityLevel severityLevel){
+	public Patient(String name, String surname, String severityLevel, String healthInsurance){
 		this.id = i++;
 		this.name = name;
 		this.surname = surname;
-		this.severityLevel = severityLevel;
 		this.state = PatientState.W;
 		this.charges = 0;
-		this.healthInsurance = HealthInsurance.NONE;
+		switch(severityLevel.toUpperCase()){
+		case("L1"):
+			this.severityLevel = SeverityLevel.L1;
+			break;
+		case("L2"):
+			this.severityLevel = SeverityLevel.L2;
+			break;
+		case("L3"):
+			this.severityLevel = SeverityLevel.L3;
+			break;
+		case("L4"):
+			this.severityLevel = SeverityLevel.L4;
+			break;
+		case("L5"):
+			this.severityLevel = SeverityLevel.L5;
+			break;
+		default:
+			this.severityLevel = SeverityLevel.L5;
+			break;
+		}
+		switch(healthInsurance.toUpperCase()){
+		case("GOLD"):
+			this.healthInsurance = HealthInsurance.GOLD;
+			break;
+		case("SILVER"):
+			this.healthInsurance = HealthInsurance.SILVER;
+			break;
+		case("NONE"):
+			this.healthInsurance = HealthInsurance.NONE;
+			break;
+		default:
+			this.healthInsurance = HealthInsurance.NONE;
+			break;
+		}
 	}
 	
 	
@@ -68,7 +106,7 @@ public class Patient {
  */
 @Override
 	public String toString() {
-		return "Patient [id=" + id + ", severityLevel=" + severityLevel + ", state=" + state + ", charges=" + charges + (physician==null?"":", physicianID="
+		return name + " [id=" + id + ", severityLevel=" + severityLevel + ", state=" + state + ", healthInsurance=" + healthInsurance + ", charges=" + charges + (physician==null?"":", physicianID="
 				+ physician.getId()) + "]";
 	}
 

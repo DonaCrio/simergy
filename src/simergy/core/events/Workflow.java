@@ -6,12 +6,16 @@ package simergy.core.events;
 
 import simergy.core.patients.*;
 import simergy.core.system.EmergencyDept;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * The Class Workflow.
  */
-public class Workflow {
+public class Workflow implements Serializable{
+
+	private static final long serialVersionUID = -450065771556983070L;
 
 	/** The integer used to generate unique ids. */
 	private static int i;

@@ -24,6 +24,16 @@ public enum HealthInsurance {
 		this.discount = discount;
 	}
 	
+	public static HealthInsurance getHealthInsurance(String type){
+		if(type.equalsIgnoreCase("GOLD")){
+			return HealthInsurance.GOLD;
+		}else if(type.equalsIgnoreCase("SILVER")){
+			return HealthInsurance.SILVER;
+		}else{
+			return HealthInsurance.NONE;
+		}
+	}
+	
 	/**
 	 * Gets the patient's discount.
 	 *

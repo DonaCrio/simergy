@@ -238,10 +238,6 @@ public TimeMachine getClock(){
 		
 	}
 	
-	public void setPatients(ArrayList<Patient> patients){
-		this.patients = patients;
-	}
-	
 	public void setWorkflows(ArrayList<Workflow> workflows){
 		this.workflows = workflows;
 	}

@@ -14,6 +14,8 @@ import simergy.core.resources.*;
  */
 public class Registration extends Event{
 	
+	private static final long serialVersionUID = 1808682799582705478L;
+
 	/**
 	 * Instantiates a new registration.
 	 * The instantiation of this class results of the assignment of a physician to the patient and a room.

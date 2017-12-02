@@ -9,6 +9,8 @@ package simergy.core.events;
  */
 public class PatientArrival extends Event{
 
+	private static final long serialVersionUID = -5123097992182110365L;
+
 	/**
 	 * Instantiates a new patient arrival event.
 	 *

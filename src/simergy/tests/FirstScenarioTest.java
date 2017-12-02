@@ -37,7 +37,7 @@ public class FirstScenarioTest {
 		ed.addResource(new BloodTest(17));
 		ed.addResource(new MRI(18));
 		ed.addResource(new Radiography(19));
-		Patient patient = new Patient("Imbert", "Quentin", SeverityLevel.L4);
+		Patient patient = new Patient(SeverityLevel.L4);
 		patient.setHealthInsurance(HealthInsurance.SILVER);
 		ed.addWorkflow(new Workflow(ed,patient));
 		while(ed.getWorkflows().get(0).getPatient().getState()!=PatientState.R){

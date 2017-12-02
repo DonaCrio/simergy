@@ -39,9 +39,9 @@ public class MultiplePatientsTestScenario {
 		ed.addResource(new BloodTest(17));
 		ed.addResource(new MRI(18));
 		ed.addResource(new Radiography(19));
-		Patient patient1 = new Patient("Imbert", "Quentin", SeverityLevel.L4);
+		Patient patient1 = new Patient(SeverityLevel.L4);
 		patient1.setHealthInsurance(HealthInsurance.SILVER);
-		Patient patient2 = new Patient("Suquet", "Victor", SeverityLevel.L4);
+		Patient patient2 = new Patient(SeverityLevel.L4);
 		patient2.setHealthInsurance(HealthInsurance.GOLD);
 		ed.addWorkflow(new Workflow(ed,patient1));
 		ed.addWorkflow(new Workflow(ed,patient2));

@@ -13,6 +13,8 @@ import simergy.core.resources.Radiography;
  */
 public class RadiographyExamination extends Examination{
 	
+	private static final long serialVersionUID = 1973012534466002711L;
+
 	/**
 	 * Instantiates a new radiography examination.
 	 *

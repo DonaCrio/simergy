@@ -12,6 +12,8 @@ import simergy.core.patients.SeverityLevel;
  */
 public abstract class Examination extends Event{
 	
+	private static final long serialVersionUID = -345298137509823041L;
+
 	/**
 	 * Instantiates a new examination event .
 	 *

@@ -11,6 +11,8 @@ package simergy.core.events;
  */
 public class Outcome extends Event{
 	
+	private static final long serialVersionUID = 4523575686202839683L;
+
 	/**
 	 * Instantiates a new outcome event.
 	 *

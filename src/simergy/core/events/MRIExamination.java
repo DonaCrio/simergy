@@ -13,6 +13,8 @@ import simergy.core.resources.HealthService;
  */
 public class MRIExamination extends Examination{
 	
+	private static final long serialVersionUID = -9091875260634724143L;
+
 	/**
 	 * Instantiates a new MRI examination.
 	 *

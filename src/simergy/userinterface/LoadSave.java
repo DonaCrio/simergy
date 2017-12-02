@@ -22,6 +22,7 @@ public class LoadSave {
 			System.out.println(fileName + ".ser was saved without any issue in /data/" + fileName + ".ser");
 			
 		}catch(IOException e){
+			e.printStackTrace();
 			System.out.println("ERROR : Failed to save the system.");;
 		}
 	}
@@ -40,6 +41,8 @@ public class LoadSave {
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			sys = (SimErgy)ois.readObject();
 			System.out.println(fileName + ".ser was loaded without any issue.");
+			ois.close();
+			fis.close();
 			return sys;
 		}catch(IOException e){
 			System.out.println("ERROR : Save couldn't be loaded, a brand new SimErgy system has been created !\n");

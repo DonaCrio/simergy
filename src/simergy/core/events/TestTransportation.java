@@ -11,6 +11,8 @@ import simergy.core.resources.HealthService;
  */
 public class TestTransportation extends Event{
 	
+	private static final long serialVersionUID = 2905517630120591225L;
+
 	/**
 	 * Instantiates a new test transportation.
 	 *

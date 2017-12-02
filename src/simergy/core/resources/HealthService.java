@@ -63,6 +63,13 @@ public abstract class HealthService extends NonHumanResource{
 		waitingQueue.remove(patient);
 	}
 
+	/**
+	 * Creates then sets a new distribution.
+	 * 
+	 * @param type the distribution's type
+	 * @param params the distribution's params
+	 * @return true if it's a success, false if it's not.
+	 */
 	public boolean createDistribution(String type, ArrayList<Double> params){
 		if(type.equalsIgnoreCase("DETERMINISTIC") && params.size()==1){
 			distribution = new Deterministic(params.get(0));

@@ -13,6 +13,8 @@ import simergy.core.resources.HealthService;
  */
 public class BloodTestExamination extends Examination{
 	
+	private static final long serialVersionUID = -4150987159968187377L;
+
 	/**
 	 * Instantiates a new blood test examination.
 	 *

@@ -11,6 +11,7 @@ import simergy.core.resources.Room;
  */
 public class Transportation extends Event{
 	
+	private static final long serialVersionUID = 4313206586375453728L;
 	private String roomType;
 	
 	/**

@@ -24,6 +24,7 @@ public class Physician extends HumanResource{
 	private ArrayList<Patient> toBeSeenPatients;
 	private ArrayList<Patient> treatedPatients;
 	private Patient currentPatient;
+	private Box messageBox;
 	
 	/**
 	 * Instantiates a new physician.
@@ -36,6 +37,7 @@ public class Physician extends HumanResource{
 		this.overseenPatients = new ArrayList<Patient>();
 		this.treatedPatients = new ArrayList<Patient>();
 		this.toBeSeenPatients = new ArrayList<Patient>();
+		this.messageBox = new Box();
 	}
 	
 	/**
@@ -48,6 +50,7 @@ public class Physician extends HumanResource{
 		this.overseenPatients = new ArrayList<Patient>();
 		this.treatedPatients = new ArrayList<Patient>();
 		this.toBeSeenPatients = new ArrayList<Patient>();
+		this.messageBox = new Box();
 		this.name = "physi" + this.id;
 		this.surname = "physi" + this.id;
 	}
@@ -182,4 +185,11 @@ public ArrayList<Patient> getOverseenPatients() {
 		return treatedPatients;
 	}
 	
+	public void recieveMessage(String content, int time, Patient p){
+		messageBox.addMessage(new Message(content,time,p));
+	}
+	
+	public void readMessageBox(){
+		messageBox.displayMessages();
+	}
 }

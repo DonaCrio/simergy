@@ -4,6 +4,7 @@
  */
 package simergy.core.events;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 import simergy.core.resources.Resource;
@@ -19,7 +20,10 @@ import simergy.core.patients.*;
  * This class is very important to handle the particularity and differences of each kind of event through polymorphism.
  * The resources needed by an event are represented by a HashMap.
  */
-public abstract class Event implements EventOperations{
+public abstract class Event implements EventOperations, Serializable{
+
+	private static final long serialVersionUID = -8417632545481743306L;
+
 
 	/** The integer used to generate unique ids. */
 	private static int i=0;

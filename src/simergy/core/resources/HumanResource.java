@@ -34,6 +34,15 @@ public abstract class HumanResource extends Resource{
 	public String toString() {
 		return "Resource [id=" + id + ", name=" + name + ", surname=" + surname + ", type=" + type + ", state=" + state + "]";
 	}
+
+	/**
+	 * Sets the surname.
+	 *
+	 * @param surname the new surname
+	 */
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
 	
 	
 }
