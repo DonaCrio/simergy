@@ -4,12 +4,15 @@
  */
 package simergy.core.resources;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * The Class Box.
  */
-public class Box {
+public class Box implements Serializable{
+
+	private static final long serialVersionUID = -6087665051394850558L;
 	//Attributes
 	/** The messages. */
 	private ArrayList<Message> messages;

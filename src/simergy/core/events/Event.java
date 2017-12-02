@@ -85,13 +85,13 @@ public abstract class Event implements EventOperations, Serializable{
 	 */
 	public boolean requirementsAllGood(){
 		boolean allGood = true;
-		for(String ressourceType : resources.keySet()){
-			if(resources.get(ressourceType)==null){
-				if(!workflow.getEd().isAvailable(ressourceType, workflow.getPatient())){
+		for(String resourceType : resources.keySet()){
+			if(resources.get(resourceType)==null){
+				if(!workflow.getEd().isAvailable(resourceType, workflow.getPatient())){
 					allGood = false;
 				}
-			}else if(resources.get(ressourceType).getState()!=State.VISITING){
-				if(!workflow.getEd().isAvailable(ressourceType,workflow.getPatient())){
+			}else if(resources.get(resourceType).getState()!=State.VISITING){
+				if(!workflow.getEd().isAvailable(resourceType, workflow.getPatient())){
 					allGood = false;
 				}
 			}

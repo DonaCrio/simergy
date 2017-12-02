@@ -5,6 +5,8 @@
 package simergy.tests;
 
 
+import java.util.ArrayList;
+
 import org.junit.Test;
 
 import simergy.core.system.*;
@@ -41,10 +43,9 @@ public class FirstScenarioTest {
 		patient.setHealthInsurance(HealthInsurance.SILVER);
 		ed.addWorkflow(new Workflow(ed,patient));
 		while(ed.getWorkflows().get(0).getPatient().getState()!=PatientState.R){
-			System.out.println("Time = "+ ed.getClock().getTime());
-			System.out.println(ed.getWorkflows().get(0).getPatient().getPhysician());
-			System.out.println(ed.getWorkflows().get(0).getCurrentEvent().toString()+"\n");
 			ed.updateTest();
+			System.out.println("Time = "+ ed.getClock().getTime());
+			System.out.println(ed.getWorkflows().get(0).getCurrentEvent().toString()+"\n");
 		}
 	}
 }

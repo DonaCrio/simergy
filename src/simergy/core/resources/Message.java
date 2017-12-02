@@ -4,13 +4,16 @@
  */
 package simergy.core.resources;
 
+import java.io.Serializable;
+
 import simergy.core.patients.Patient;
 
 /**
  * The Class Message.
  */
-public class Message {
+public class Message implements Serializable{
 
+	private static final long serialVersionUID = 3762987996770124659L;
 	private String content;
 	private int time;
 	private Patient p;

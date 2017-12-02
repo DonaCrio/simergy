@@ -50,9 +50,7 @@ public class MultiplePatientsTestScenario {
 			ed.updateTest();
 			System.out.println("Time = "+ ed.getClock().getTime());
 			System.out.println(ed.getWorkflows().get(0).getCurrentEvent().toString());
-			System.out.println(ed.getWorkflows().get(0).getPatient().getPhysician().toString());
 			System.out.println(ed.getWorkflows().get(1).getCurrentEvent().toString());
-			System.out.println(ed.getWorkflows().get(1).getPatient().getPhysician().toString()+"\n");
 		}
 	}
 

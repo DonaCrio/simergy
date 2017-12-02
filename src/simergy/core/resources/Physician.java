@@ -185,11 +185,58 @@ public ArrayList<Patient> getOverseenPatients() {
 		return treatedPatients;
 	}
 	
+	/**
+	 * Adds new message to the box.
+	 *
+	 * @param content the content
+	 * @param time the time of arrival
+	 * @param p the patient sending the message
+	 * @return the treated patients
+	 */
 	public void recieveMessage(String content, int time, Patient p){
 		messageBox.addMessage(new Message(content,time,p));
 	}
 	
+	/**
+	 * Returns the content of the box.
+	 */
 	public void readMessageBox(){
 		messageBox.displayMessages();
+	}
+
+	/**
+	 * Sets the patients being overseen.
+	 * 
+	 * @param overseenPatients
+	 */
+	public void setOverseenPatients(ArrayList<Patient> overseenPatients) {
+		this.overseenPatients = overseenPatients;
+	}
+
+	/**
+	 * Sets the patients the physician has to see.
+	 * 
+	 * @param toBeSeenPatients
+	 */
+	public void setToBeSeenPatients(ArrayList<Patient> toBeSeenPatients) {
+		this.toBeSeenPatients = toBeSeenPatients;
+	}
+
+	/**
+	 * Sets the patients already treated.
+	 * 
+	 * @param treatedPatients
+	 */
+	public void setTreatedPatients(ArrayList<Patient> treatedPatients) {
+		this.treatedPatients = treatedPatients;
+	}
+
+	/**
+	 * Sets the patient being consulted by the physician.
+	 * 
+	 * @param currentPatient
+	 */
+	public void setCurrentPatient(Patient currentPatient) {
+		this.currentPatient = currentPatient;
 	}
 }

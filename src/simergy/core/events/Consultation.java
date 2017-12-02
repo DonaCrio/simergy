@@ -30,6 +30,8 @@ public class Consultation extends Event{
 		resources.put(roomType, room);
 		if(room == null){
 			secondTime = true;
+		}else{
+			workflow.setConsultationTime(workflow.getEd().getClock().getTime());
 		}
 	}
 	/**

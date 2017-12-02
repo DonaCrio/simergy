@@ -264,6 +264,34 @@ public class CommandLineUserInterface {
 				}
 				
 				
+			}else if(cmd.contentEquals("addTransp")){
+				if(st.countTokens()==1){
+					EmergencyDept ed = sys.getEDs().get(st.nextToken());
+					if(ed!=null){
+						Resource transp = ed.getResourceFactory().getRessource("TRANSPORTER");
+						ed.addResource(transp);
+						System.out.println(transp.getName() + " was successfully added to " + ed.getName() + ".");
+					}else{
+						System.out.println("ERROR : This ED doesn't exists.");
+					}
+				}else if(st.countTokens()==3){
+					EmergencyDept ed = sys.getEDs().get(st.nextToken());
+					if(ed!=null){
+						Resource transp = ed.getResourceFactory().getRessource("TRANSPORTER");
+						String name = st.nextToken();
+						String surname = st.nextToken();
+						((HumanResource)transp).setName(name);
+						((HumanResource)transp).setSurname(surname);
+						ed.addResource(transp);
+						System.out.println(transp.getName() + " was successfully added to " + ed.getName() + ".");
+					}else{
+						System.out.println("ERROR : This ED doesn't exists.");
+					}
+				}else{
+					System.out.println("ERROR : Requires 1 or 3 arguments (<EDname>,<NurseName>,<NurseSurname>).");
+				}
+				
+				
 			}else if(cmd.contentEquals("addPhysi")){
 				if(st.countTokens()==1){
 					EmergencyDept ed = sys.getEDs().get(st.nextToken());
@@ -348,11 +376,52 @@ public class CommandLineUserInterface {
 					System.out.println("ERROR : Requires 3 arguments (<EDname>,<PatientID>,<HealthInsurance>).");
 				}
 				
+			}else if(cmd.contentEquals("simulate")){
+				if(st.countTokens()==2){
+					EmergencyDept ed = sys.getEDs().get(st.nextToken());
+					if(ed!=null){
+						try{
+							int endTime = Integer.parseInt(st.nextToken());
+							ArrayList<Double> KPIs = sys.simulation(ed, endTime);
+							System.out.println("\n# Key performance indicators for ED : " + ed.getName() + "\n"
+									+ "### Patients Released : " + KPIs.get(2) + "/" + ed.getWorkflows().size() + "\n"
+									+ "### DTDT = " +  KPIs.get(0) + "\n"
+									+ "### LOS = " + KPIs.get(1));
+						}catch(NumberFormatException e){
+							System.out.println("ERROR : <SimulationTime> must be an integer.");
+						}
+						
+					}else{
+						System.out.println("ERROR : This ED doesn't exists.");
+					}
+					
+				}else{
+					System.out.println("Type 'simulation <EDName>,<SimulationTime>' to simulate Ed with given name during given time.\n"
+							+ "List of EDs present in the system :\n");
+					for(String name : sys.getEDs().keySet()){
+						System.out.println("# " + name);
+					}
+				}
+				
+				
+			}else if(cmd.contentEquals("reset")){
+				if(st.countTokens()==1){
+					EmergencyDept ed = sys.getEDs().get(st.nextToken());
+					if(ed!=null){
+						sys.reset(ed);
+						System.out.println(ed.getName() + " was successfully reset.");
+					}else{
+						System.out.println("ERROR : This ED doesn't exists.");
+					}
+				}else{
+					System.out.println("ERROR : Requires 1 arguments (<EDname>).");
+				}
+				
 			}else if(cmd.contentEquals("display")){
 				if(st.countTokens()==1){
 					String name = st.nextToken();
 					System.out.println(sys.getEDs().get(name)==null?"ERROR : This ED doesn't exists.":displayED(sys.getEDs().get(name)));
-				}else if(st.countTokens()==0){
+				}else{
 					System.out.println("Type 'display <EDName>' to display Ed with given name.\n"
 							+ "List of EDs present in the system :\n");
 					for(String name : sys.getEDs().keySet()){
@@ -373,8 +442,9 @@ public class CommandLineUserInterface {
 		if(param.contentEquals("")){
 			System.out.println("Welcome into SimErgy's help.\n"
 					+ "To get the full commands guide type : 'help f'.\n"
-					+ "To get the save's commands guide type : 'help s'\n"
-					+ "To get the ED's command guide type : 'help ed'\n"
+					+ "To get the save/load commands guide type : 'help s'\n"
+					+ "To get the ED command guide type : 'help ed'\n"
+					+ "To get the ED simulation command guide type : 'help sim'\n"
 					+ "To get help on a specific command type : 'help <commandeName>.");
 			
 		}if(param.contentEquals("save") || param.contentEquals("f") || param.contentEquals("s")){
@@ -446,13 +516,15 @@ public class CommandLineUserInterface {
 			System.out.println("\n# addPatient <EDname>,<PatientName>,<PatientSurname>,<SeverityLevel>,<HealthInsurance> : registers a patient with given name and surname to an ED with given name.\n"
 					+ "<SeverityLevel> representing the level of severity of the patient. It has to be : 'L1', 'L2', 'L3', 'L4' or 'L5'.\n"
 					+ "<HealthInsurance> representing the health insurance of the patient. It has to be : 'GOLD', 'SILVER', 'NONE'.");
-		
-		}if(param.contentEquals("registerPatient") || param.contentEquals("f") || param.contentEquals("ed")){
 			
 		}if(param.contentEquals("setPatientInsurance") || param.contentEquals("f") || param.contentEquals("ed")){
 			
 		}if(param.contentEquals("display") || param.contentEquals("f") || param.contentEquals("ed")){
 		
+		}if(param.contentEquals("simulation") || param.contentEquals("f") || param.contentEquals("ed") || param.contentEquals("sim")){
+			
+		}if(param.contentEquals("reset") || param.contentEquals("f") || param.contentEquals("ed") || param.contentEquals("sim")){
+			
 		}
 	}
 	

@@ -42,7 +42,7 @@ public class EmergencyDept implements Serializable{
 	 * @param name the department's name
 	 */
 	public EmergencyDept(String name) {
-		this.setName(name);
+		this.name = name;
 		this.workflows = new ArrayList<Workflow>();
 		this.patients = new ArrayList<Patient>();
 		this.clock = new TimeMachine();
@@ -118,7 +118,7 @@ public class EmergencyDept implements Serializable{
 	public boolean isAvailable(String resourceType, Patient patient){
 		if(resourceType=="PHYSICIAN"){
 			if(patient.getPhysician().getState()==State.IDLE){
-				return patient.getPhysician().nextPatient()==patient;
+				return patient.getPhysician().nextPatient()==null || patient.getPhysician().nextPatient()==patient;
 			}else{
 				return false;
 			}
@@ -127,7 +127,7 @@ public class EmergencyDept implements Serializable{
 			ArrayList<Resource> askedResources = resources.get(resourceType);
 			for(Resource r : askedResources){
 				if(r.getState()==State.IDLE){
-					return r.nextPatient() == null || r.nextPatient()== patient;
+					return r.nextPatient()==null || r.nextPatient()==patient;
 				}
 			}
 			return false;
@@ -256,6 +256,10 @@ public TimeMachine getClock(){
 
 	public ResourceFactory getResourceFactory() {
 		return resourceFactory;
+	}
+
+	public void setPatients(ArrayList<Patient> patients) {
+		this.patients = patients;
 	}
 	
 }

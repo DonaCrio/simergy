@@ -110,4 +110,8 @@ public abstract class HealthService extends NonHumanResource{
 	public void setDistribution(ProbabilityDistribution distribution) {
 		this.distribution = distribution;
 	}
+
+	public void setWaitingQueue(ArrayList<Patient> waitingQueue) {
+		this.waitingQueue = waitingQueue;
+	}
 }
