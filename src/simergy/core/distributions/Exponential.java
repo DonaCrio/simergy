@@ -24,8 +24,8 @@ public class Exponential implements ProbabilityDistribution{
 	/*
 	 * @see simergy.core.distributions.ProbabilityDistribution#generateSample()
 	 */
-	public int generateSample(){
+	public double generateSample(){
 		double r = Math.random();
-		return (int)Math.round(-Math.log(1-r)/this.lambda);
+		return -Math.log(1-r)/this.lambda;
 	}
 }

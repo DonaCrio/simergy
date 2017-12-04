@@ -20,9 +20,9 @@ public class MRIExamination extends Examination{
 	 *
 	 * @param workflow the workflow
 	 */
-	public MRIExamination(Workflow workflow){
+	public MRIExamination(Workflow workflow, double startTime){
 		super(workflow, "MRI examination of patient n° " + Integer.toString(workflow.getPatient().getId()), 
-				"MRIEXAMINATION", ((HealthService)workflow.getEd().getResources().get("MRI").get(0)).getDistribution().generateSample());
+				"MRIEXAMINATION", startTime, ((HealthService)workflow.getEd().getResources().get("MRI").get(0)).getDistribution().generateSample());
 		resources.put("MRI",workflow.getEd().getResources().get("MRI").get(0));
 	}
 	

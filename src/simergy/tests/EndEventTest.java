@@ -25,8 +25,8 @@ public class EndEventTest {
 		EmergencyDept ed = new EmergencyDept("myED");
 		ed.addResource(new Nurse(0, "Blanco", "Camille"));
 		ed.addResource(new Physician(1, "Said","Sammy"));
-		Workflow workflow = new Workflow(ed, new Patient(SeverityLevel.L5));
-		workflow.setCurrentEvent(new Registration(workflow));
+		Workflow workflow = new Workflow(ed, new Patient(SeverityLevel.L5),0);
+		workflow.setCurrentEvent(new Registration(workflow,0));
 		try{
 			workflow.getCurrentEvent().startEvent();
 		}catch(EventStartFailedException e){}

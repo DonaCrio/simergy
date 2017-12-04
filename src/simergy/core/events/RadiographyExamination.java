@@ -20,9 +20,9 @@ public class RadiographyExamination extends Examination{
 	 *
 	 * @param workflow the workflow
 	 */
-	public RadiographyExamination(Workflow workflow){
+	public RadiographyExamination(Workflow workflow, double startTime){
 		super(workflow, "Radiography examination of patient n° " + Integer.toString(workflow.getPatient().getId()), 
-				"RADIOGRAPHYEXAMINATION", ((HealthService)workflow.getEd().getResources().get("MRI").get(0)).getDistribution().generateSample());
+				"RADIOGRAPHYEXAMINATION", startTime, ((HealthService)workflow.getEd().getResources().get("MRI").get(0)).getDistribution().generateSample());
 		resources.put("RADIOGRAPHY",workflow.getEd().getResources().get("RADIOGRAPHY").get(0));
 	}
 	

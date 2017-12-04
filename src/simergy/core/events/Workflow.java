@@ -1,3 +1,4 @@
+
 /*
  * @author Donatien Criaud
  * 
@@ -23,9 +24,9 @@ public class Workflow implements Serializable{
 	private int id;
 	private String name;
 	private EmergencyDept ed;
-	private int startTime;
-	private int consultationTime;
-	private int endTime;
+	private double startTime;
+	private double consultationTime;
+	private double endTime;
 	private Patient patient;
 	private ArrayList<Event> passedEvents;
 	private Event currentEvent;
@@ -37,11 +38,11 @@ public class Workflow implements Serializable{
 	 * @param ed the ed
 	 * @param patient the patient concerned by this workflow
 	 */
-	public Workflow(EmergencyDept ed, Patient patient){
+	public Workflow(EmergencyDept ed, Patient patient, double startTime){
 		this.id = i++;
 		this.name = "Workflow n°" + id + " in ED";
 		this.ed = ed;
-		this.startTime = ed.getClock().getTime();
+		this.startTime = startTime;
 		this.patient = patient;
 		this.passedEvents = new ArrayList<Event>();
 		this.currentEvent = new PatientArrival(this);
@@ -50,21 +51,12 @@ public class Workflow implements Serializable{
 		
 	}
 	
-	public int getStartTime() {
+	public double getStartTime() {
 		return startTime;
 	}
 
-	public void setStartTime(int startTime) {
+	public void setStartTime(double startTime) {
 		this.startTime = startTime;
-	}
-
-	/**
-	 * Updates the workflow by updating the current event in it.
-	 * 
-	 * @see simergy.events.EventOperations#update()
-	 */
-	public void update(){
-		currentEvent.update();
 	}
 	
 	/**
@@ -154,19 +146,19 @@ public class Workflow implements Serializable{
 		return state;
 	}
 
-	public int getEndTime() {
+	public double getEndTime() {
 		return endTime;
 	}
 
-	public void setEndTime(int endTime) {
+	public void setEndTime(double endTime) {
 		this.endTime = endTime;
 	}
 
-	public int getConsultationTime() {
+	public double getConsultationTime() {
 		return consultationTime;
 	}
 
-	public void setConsultationTime(int consultationTime) {
+	public void setConsultationTime(double consultationTime) {
 		this.consultationTime = consultationTime;
 	}
 	

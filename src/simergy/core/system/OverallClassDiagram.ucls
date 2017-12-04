@@ -1,689 +1,705 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class-diagram version="1.2.1" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+<class-diagram version="1.2.1" icons="true" always-add-relationships="true" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="simergy.core.system.EmergencyDept" project="SimErgy" 
     file="/SimErgy/src/simergy/core/system/EmergencyDept.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="500" y="141"/>    
+    <position height="549" width="325" x="263" y="-69"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="simergy.core.system.PatientGenerator" project="SimErgy" 
+  <class id="2" language="java" name="simergy.core.system.SimErgy" project="SimErgy" 
+    file="/SimErgy/src/simergy/core/system/SimErgy.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="428" y="-274"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="simergy.core.system.PatientGenerator" project="SimErgy" 
     file="/SimErgy/src/simergy/core/system/PatientGenerator.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="631" y="-181"/>    
+    <position height="-1" width="-1" x="1089" y="-181"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="simergy.core.system.TimeMachine" project="SimErgy" 
-    file="/SimErgy/src/simergy/core/system/TimeMachine.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="339" y="-174"/>    
+  <class id="4" language="java" name="simergy.core.events.Workflow" project="SimErgy" 
+    file="/SimErgy/src/simergy/core/events/Workflow.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="23" y="205"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="simergy.core.patients.Patient" project="SimErgy" 
-    file="/SimErgy/src/simergy/core/patients/Patient.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="944" y="71"/>    
+  <class id="5" language="java" name="simergy.core.events.Event" project="SimErgy" 
+    file="/SimErgy/src/simergy/core/events/Event.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-831" y="206"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <enumeration id="5" language="java" name="simergy.core.patients.PatientState" project="SimErgy" 
-    file="/SimErgy/src/simergy/core/patients/PatientState.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1233" y="-130"/>    
+  <enumeration id="6" language="java" name="simergy.core.events.EventState" project="SimErgy" 
+    file="/SimErgy/src/simergy/core/events/EventState.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-426" y="-132"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </enumeration>  
-  <enumeration id="6" language="java" name="simergy.core.patients.SeverityLevel" project="SimErgy" 
-    file="/SimErgy/src/simergy/core/patients/SeverityLevel.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1259" y="88"/>    
+  <interface id="7" language="java" name="simergy.core.events.EventOperations" project="SimErgy" 
+    file="/SimErgy/src/simergy/core/events/EventOperations.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-834" y="-237"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
-  </enumeration>  
-  <enumeration id="7" language="java" name="simergy.core.patients.HealthInsurance" project="SimErgy" 
-    file="/SimErgy/src/simergy/core/patients/HealthInsurance.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1239" y="296"/>    
+  </interface>  
+  <class id="8" language="java" name="simergy.core.events.PatientArrival" project="SimErgy" 
+    file="/SimErgy/src/simergy/core/events/PatientArrival.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-1573" y="637"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
-  </enumeration>  
-  <class id="8" language="java" name="simergy.core.resources.Resource" project="SimErgy" 
+  </class>  
+  <class id="9" language="java" name="simergy.core.events.Registration" project="SimErgy" 
+    file="/SimErgy/src/simergy/core/events/Registration.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-1400" y="645"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="simergy.core.events.Transportation" project="SimErgy" 
+    file="/SimErgy/src/simergy/core/events/Transportation.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-1191" y="655"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="simergy.core.events.Consultation" project="SimErgy" 
+    file="/SimErgy/src/simergy/core/events/Consultation.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-946" y="664"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="simergy.core.events.Examination" project="SimErgy" 
+    file="/SimErgy/src/simergy/core/events/Examination.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-457" y="637"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="simergy.core.events.Outcome" project="SimErgy" 
+    file="/SimErgy/src/simergy/core/events/Outcome.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-228" y="646"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="simergy.core.events.BloodTestExamination" project="SimErgy" 
+    file="/SimErgy/src/simergy/core/events/BloodTestExamination.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-223" y="806"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="simergy.core.events.MRIExamination" project="SimErgy" 
+    file="/SimErgy/src/simergy/core/events/MRIExamination.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-675" y="807"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="simergy.core.events.RadiographyExamination" project="SimErgy" 
+    file="/SimErgy/src/simergy/core/events/RadiographyExamination.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-457" y="806"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="simergy.core.events.TestTransportation" project="SimErgy" 
+    file="/SimErgy/src/simergy/core/events/TestTransportation.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-709" y="636"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="simergy.core.resources.Resource" project="SimErgy" 
     file="/SimErgy/src/simergy/core/resources/Resource.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="482" y="557"/>    
+    <position height="-1" width="-1" x="419" y="800"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="simergy.core.resources.HumanResource" project="SimErgy" 
+  <class id="19" language="java" name="simergy.core.resources.HumanResource" project="SimErgy" 
     file="/SimErgy/src/simergy/core/resources/HumanResource.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="758" y="740"/>    
+    <position height="-1" width="-1" x="811" y="1003"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="simergy.core.resources.NonHumanResource" project="SimErgy" 
+  <class id="20" language="java" name="simergy.core.resources.NonHumanResource" project="SimErgy" 
     file="/SimErgy/src/simergy/core/resources/NonHumanResource.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="148" y="727"/>    
+    <position height="-1" width="-1" x="129" y="976"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="11" language="java" name="simergy.core.resources.Nurse" project="SimErgy" 
-    file="/SimErgy/src/simergy/core/resources/Nurse.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="786" y="900"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="12" language="java" name="simergy.core.resources.Transporter" project="SimErgy" 
-    file="/SimErgy/src/simergy/core/resources/Transporter.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="623" y="900"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="13" language="java" name="simergy.core.resources.Physician" project="SimErgy" 
-    file="/SimErgy/src/simergy/core/resources/Physician.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1011" y="992"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="14" language="java" name="simergy.core.resources.HealthService" project="SimErgy" 
-    file="/SimErgy/src/simergy/core/resources/HealthService.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="-103" y="932"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="15" language="java" name="simergy.core.resources.Room" project="SimErgy" 
-    file="/SimErgy/src/simergy/core/resources/Room.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="317" y="876"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="16" language="java" name="simergy.core.resources.WaitingRoom" project="SimErgy" 
-    file="/SimErgy/src/simergy/core/resources/WaitingRoom.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="181" y="1037"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="17" language="java" name="simergy.core.resources.ShockRoom" project="SimErgy" 
-    file="/SimErgy/src/simergy/core/resources/ShockRoom.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="335" y="1037"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="18" language="java" name="simergy.core.resources.BoxRoom" project="SimErgy" 
-    file="/SimErgy/src/simergy/core/resources/BoxRoom.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="486" y="1037"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <enumeration id="19" language="java" name="simergy.core.resources.State" project="SimErgy" 
-    file="/SimErgy/src/simergy/core/resources/State.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="689" y="514"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </enumeration>  
-  <class id="20" language="java" name="simergy.core.resources.BloodTest" project="SimErgy" 
+  <class id="21" language="java" name="simergy.core.resources.BloodTest" project="SimErgy" 
     file="/SimErgy/src/simergy/core/resources/BloodTest.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="-311" y="1157"/>    
+    <position height="-1" width="-1" x="459" y="1438"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="21" language="java" name="simergy.core.resources.Radiography" project="SimErgy" 
-    file="/SimErgy/src/simergy/core/resources/Radiography.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="-142" y="1156"/>    
+  <class id="22" language="java" name="simergy.core.resources.Box" project="SimErgy" 
+    file="/SimErgy/src/simergy/core/resources/Box.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1408" y="1083"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="22" language="java" name="simergy.core.resources.MRI" project="SimErgy" 
+  <class id="23" language="java" name="simergy.core.resources.BoxRoom" project="SimErgy" 
+    file="/SimErgy/src/simergy/core/resources/BoxRoom.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="41" y="1232"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="24" language="java" name="simergy.core.resources.HealthService" project="SimErgy" 
+    file="/SimErgy/src/simergy/core/resources/HealthService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="313" y="1205"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" name="simergy.core.resources.Message" project="SimErgy" 
+    file="/SimErgy/src/simergy/core/resources/Message.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1663" y="1082"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="simergy.core.resources.MRI" project="SimErgy" 
     file="/SimErgy/src/simergy/core/resources/MRI.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="16" y="1155"/>    
+    <position height="-1" width="-1" x="176" y="1438"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="23" language="java" name="simergy.events.Workflow" project="SimErgy" 
-    file="/SimErgy/src/simergy/events/Workflow.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="59" y="149"/>    
+  <class id="27" language="java" name="simergy.core.resources.Nurse" project="SimErgy" 
+    file="/SimErgy/src/simergy/core/resources/Nurse.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="656" y="1172"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="24" language="java" name="simergy.events.Event" project="SimErgy" 
-    file="/SimErgy/src/simergy/events/Event.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="-300" y="135"/>    
+  <class id="28" language="java" name="simergy.core.resources.Physician" project="SimErgy" 
+    file="/SimErgy/src/simergy/core/resources/Physician.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1101" y="1083"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="25" language="java" name="simergy.events.EventOperations" project="SimErgy" 
-    file="/SimErgy/src/simergy/events/EventOperations.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="-297" y="-261"/>    
+  <class id="29" language="java" name="simergy.core.resources.Radiography" project="SimErgy" 
+    file="/SimErgy/src/simergy/core/resources/Radiography.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="317" y="1439"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
-  </interface>  
-  <enumeration id="26" language="java" name="simergy.events.EventState" project="SimErgy" 
-    file="/SimErgy/src/simergy/events/EventState.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="-59" y="-195"/>    
+  </class>  
+  <class id="30" language="java" name="simergy.core.resources.ResourceFactory" project="SimErgy" 
+    file="/SimErgy/src/simergy/core/resources/ResourceFactory.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="419" y="564"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="31" language="java" name="simergy.core.resources.Room" project="SimErgy" 
+    file="/SimErgy/src/simergy/core/resources/Room.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-107" y="1110"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="32" language="java" name="simergy.core.resources.ShockRoom" project="SimErgy" 
+    file="/SimErgy/src/simergy/core/resources/ShockRoom.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-252" y="1232"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="33" language="java" name="simergy.core.resources.State" project="SimErgy" 
+    file="/SimErgy/src/simergy/core/resources/State.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="83" y="799"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </enumeration>  
-  <class id="27" language="java" name="simergy.events.PatientArrival" project="SimErgy" 
-    file="/SimErgy/src/simergy/events/PatientArrival.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="-584" y="-262"/>    
+  <class id="34" language="java" name="simergy.core.resources.Transporter" project="SimErgy" 
+    file="/SimErgy/src/simergy/core/resources/Transporter.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="842" y="1170"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="28" language="java" name="simergy.events.Registration" project="SimErgy" 
-    file="/SimErgy/src/simergy/events/Registration.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="-586" y="-149"/>    
+  <class id="35" language="java" name="simergy.core.resources.WaitingRoom" project="SimErgy" 
+    file="/SimErgy/src/simergy/core/resources/WaitingRoom.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-106" y="1232"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="29" language="java" name="simergy.events.Transportation" project="SimErgy" 
-    file="/SimErgy/src/simergy/events/Transportation.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="-603" y="-16"/>    
+  <class id="36" language="java" name="simergy.core.patients.Patient" project="SimErgy" 
+    file="/SimErgy/src/simergy/core/patients/Patient.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1099" y="356"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="30" language="java" name="simergy.events.Consultation" project="SimErgy" 
-    file="/SimErgy/src/simergy/events/Consultation.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="-613" y="119"/>    
+  <enumeration id="37" language="java" name="simergy.core.patients.PatientState" project="SimErgy" 
+    file="/SimErgy/src/simergy/core/patients/PatientState.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1467" y="273"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
-  </class>  
-  <class id="31" language="java" name="simergy.events.TestTransportation" project="SimErgy" 
-    file="/SimErgy/src/simergy/events/TestTransportation.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="-600" y="232"/>    
+  </enumeration>  
+  <enumeration id="38" language="java" name="simergy.core.patients.SeverityLevel" project="SimErgy" 
+    file="/SimErgy/src/simergy/core/patients/SeverityLevel.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1463" y="34"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
-  </class>  
-  <class id="32" language="java" name="simergy.events.Examination" project="SimErgy" 
-    file="/SimErgy/src/simergy/events/Examination.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="-617" y="484"/>    
+  </enumeration>  
+  <enumeration id="39" language="java" name="simergy.core.patients.HealthInsurance" project="SimErgy" 
+    file="/SimErgy/src/simergy/core/patients/HealthInsurance.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1475" y="490"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
-  </class>  
-  <class id="33" language="java" name="simergy.events.Outcome" project="SimErgy" 
-    file="/SimErgy/src/simergy/events/Outcome.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="-586" y="357"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="34" language="java" name="simergy.events.BloodTestExamination" project="SimErgy" 
-    file="/SimErgy/src/simergy/events/BloodTestExamination.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="-823" y="610"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="35" language="java" name="simergy.events.RadiographyExamination" project="SimErgy" 
-    file="/SimErgy/src/simergy/events/RadiographyExamination.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="-615" y="610"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="36" language="java" name="simergy.events.MRIExamination" project="SimErgy" 
-    file="/SimErgy/src/simergy/events/MRIExamination.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="-422" y="611"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <interface id="37" language="java" name="simergy.core.distributions.ProbabilityDistribution" project="SimErgy" 
-    file="/SimErgy/src/simergy/core/distributions/ProbabilityDistribution.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1272" y="631"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </interface>  
-  <class id="38" language="java" name="simergy.core.distributions.Uniform" project="SimErgy" 
-    file="/SimErgy/src/simergy/core/distributions/Uniform.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1456" y="503"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="39" language="java" name="simergy.core.distributions.Exponential" project="SimErgy" 
-    file="/SimErgy/src/simergy/core/distributions/Exponential.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1451" y="635"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="40" language="java" name="simergy.core.distributions.Deterministic" project="SimErgy" 
-    file="/SimErgy/src/simergy/core/distributions/Deterministic.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1451" y="762"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="41" language="java" name="simergy.core.distributions.ConsultationDistribution" project="SimErgy" 
-    file="/SimErgy/src/simergy/core/distributions/ConsultationDistribution.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="776" y="1083"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <association id="42">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="43" name="severityLevel"/>      
-      <multiplicity id="44" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="45">    
-    <end type="SOURCE" refId="27"/>    
-    <end type="TARGET" refId="24"/>  
+  </enumeration>  
+  <generalization id="40">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="18"/>  
   </generalization>  
-  <association id="46">    
-    <end type="SOURCE" refId="24" navigable="false">      
-      <attribute id="47" name="state"/>      
-      <multiplicity id="48" minimum="0" maximum="1"/>    
+  <generalization id="41">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <generalization id="42">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <generalization id="43">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <generalization id="44">    
+    <end type="SOURCE" refId="27"/>    
+    <end type="TARGET" refId="19"/>  
+  </generalization>  
+  <association id="45">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="46" name="messageBox"/>      
+      <multiplicity id="47" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="26" navigable="true"/>    
+    <end type="TARGET" refId="22" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <generalization id="48">    
+    <end type="SOURCE" refId="34"/>    
+    <end type="TARGET" refId="19"/>  
+  </generalization>  
   <generalization id="49">    
     <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="9"/>  
+    <end type="TARGET" refId="5"/>  
   </generalization>  
   <association id="50">    
-    <bendpoint x="1331" y="142"/>    
-    <bendpoint x="1331" y="386"/>    
-    <bendpoint x="1330" y="491"/>    
-    <bendpoint x="1273" y="491"/>    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="51" name="distribution"/>      
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="51" name="resourceFactory"/>      
       <multiplicity id="52" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="37" navigable="true"/>    
+    <end type="TARGET" refId="30" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="53">    
-    <bendpoint x="219" y="1185"/>    
-    <bendpoint x="1273" y="1188"/>    
-    <end type="SOURCE" refId="14" navigable="false">      
-      <attribute id="54" name="distribution"/>      
-      <multiplicity id="55" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="37" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="56">    
-    <bendpoint x="340" y="174"/>    
-    <bendpoint x="242" y="206"/>    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="57" name="workflows"/>      
-      <multiplicity id="58" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="23" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="59">    
-    <end type="SOURCE" refId="23" navigable="false">      
-      <attribute id="60" name="state"/>      
-      <multiplicity id="61" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="26" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="62">    
-    <end type="SOURCE" refId="38"/>    
-    <end type="TARGET" refId="37"/>  
+  <realization id="53">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="7"/>  
   </realization>  
-  <association id="63">    
+  <association id="54">    
     <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="64" name="healthInsurance"/>      
-      <multiplicity id="65" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="66">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="67" name="state"/>      
-      <multiplicity id="68" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="69">    
-    <end type="SOURCE" refId="32"/>    
-    <end type="TARGET" refId="24"/>  
-  </generalization>  
-  <association id="70">    
-    <bendpoint x="902" y="609"/>    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="71" name="physician"/>      
-      <multiplicity id="72" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="73">    
-    <end type="SOURCE" refId="16"/>    
-    <end type="TARGET" refId="15"/>  
-  </generalization>  
-  <realization id="74">    
-    <end type="SOURCE" refId="40"/>    
-    <end type="TARGET" refId="37"/>  
-  </realization>  
-  <generalization id="75">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="8"/>  
-  </generalization>  
-  <generalization id="76">    
-    <end type="SOURCE" refId="14"/>    
-    <end type="TARGET" refId="10"/>  
-  </generalization>  
-  <association id="77">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="78" name="patients"/>      
-      <multiplicity id="79" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="80">    
-    <end type="SOURCE" refId="31"/>    
-    <end type="TARGET" refId="24"/>  
-  </generalization>  
-  <association id="81">    
-    <bendpoint x="1068" y="400"/>    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="82" name="overseenPatients"/>      
-      <multiplicity id="83" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="84">    
-    <bendpoint x="-107" y="53"/>    
-    <end type="SOURCE" refId="24" navigable="false">      
-      <attribute id="85" name="workflow"/>      
-      <multiplicity id="86" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="23" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="87">    
-    <bendpoint x="1039" y="410"/>    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="88" name="treatedPatients"/>      
-      <multiplicity id="89" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="90">    
-    <end type="SOURCE" refId="18"/>    
-    <end type="TARGET" refId="15"/>  
-  </generalization>  
-  <association id="91">    
-    <bendpoint x="42" y="441"/>    
-    <end type="SOURCE" refId="24" navigable="false">      
-      <attribute id="92" name="resources"/>      
-      <multiplicity id="93" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="94">    
-    <end type="SOURCE" refId="34"/>    
-    <end type="TARGET" refId="32"/>  
-  </generalization>  
-  <association id="95">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="96" name="state"/>      
-      <multiplicity id="97" minimum="0" maximum="1"/>    
+      <attribute id="55" name="currentEvent"/>      
+      <multiplicity id="56" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="98">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="9"/>  
+  <association id="57">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="58" name="state"/>      
+      <multiplicity id="59" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="33" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="60">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="18"/>  
   </generalization>  
-  <generalization id="99">    
-    <end type="SOURCE" refId="35"/>    
-    <end type="TARGET" refId="32"/>  
+  <association id="61">    
+    <bendpoint x="1292" y="798"/>    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="62" name="currentPatient"/>      
+      <multiplicity id="63" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="36" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="64">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="65" name="resources"/>      
+      <multiplicity id="66" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="67">    
+    <bendpoint x="787" y="246"/>    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="68" name="patients"/>      
+      <multiplicity id="69" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="36" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="70">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="12"/>  
   </generalization>  
-  <generalization id="100">    
-    <end type="SOURCE" refId="29"/>    
-    <end type="TARGET" refId="24"/>  
+  <generalization id="71">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="12"/>  
   </generalization>  
-  <generalization id="101">    
+  <association id="72">    
+    <bendpoint x="1022" y="806"/>    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="73" name="overseenPatients"/>      
+      <multiplicity id="74" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="36" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="75">    
+    <end type="SOURCE" refId="25" navigable="false">      
+      <attribute id="76" name="p"/>      
+      <multiplicity id="77" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="36" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="78">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="79" name="state"/>      
+      <multiplicity id="80" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="81">    
+    <bendpoint x="776" y="816"/>    
+    <end type="SOURCE" refId="24" navigable="false">      
+      <attribute id="82" name="currentPatient"/>      
+      <multiplicity id="83" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="36" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="84">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="20"/>  
+  </generalization>  
+  <association id="85">    
+    <bendpoint x="595" y="460"/>    
+    <bendpoint x="198" y="461"/>    
+    <end type="SOURCE" refId="36" navigable="false">      
+      <attribute id="86" name="workflow"/>      
+      <multiplicity id="87" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="88">    
     <end type="SOURCE" refId="15"/>    
-    <end type="TARGET" refId="10"/>  
+    <end type="TARGET" refId="12"/>  
   </generalization>  
-  <association id="102">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="103" name="clock"/>      
-      <multiplicity id="104" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="105">    
-    <end type="SOURCE" refId="39"/>    
-    <end type="TARGET" refId="37"/>  
-  </realization>  
-  <realization id="106">    
-    <end type="SOURCE" refId="24"/>    
-    <end type="TARGET" refId="25"/>  
-  </realization>  
-  <association id="107">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="108" name="generator"/>      
-      <multiplicity id="109" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="110">    
-    <bendpoint x="60" y="529"/>    
-    <bendpoint x="396" y="407"/>    
-    <bendpoint x="761" y="299"/>    
-    <end type="SOURCE" refId="14" navigable="false">      
-      <attribute id="111" name="waitingQueue"/>      
-      <multiplicity id="112" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="113">    
-    <bendpoint x="1095" y="406"/>    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="114" name="toBeSeenPatients"/>      
-      <multiplicity id="115" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="116">    
-    <end type="SOURCE" refId="21"/>    
-    <end type="TARGET" refId="14"/>  
-  </generalization>  
-  <generalization id="117">    
-    <end type="SOURCE" refId="33"/>    
-    <end type="TARGET" refId="24"/>  
-  </generalization>  
-  <association id="118">    
-    <end type="SOURCE" refId="23" navigable="false">      
-      <attribute id="119" name="passedEvents"/>      
-      <multiplicity id="120" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="24" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="121">    
-    <bendpoint x="310" y="308"/>    
-    <bendpoint x="387" y="352"/>    
-    <bendpoint x="812" y="363"/>    
-    <end type="SOURCE" refId="23" navigable="false">      
-      <attribute id="122" name="patient"/>      
-      <multiplicity id="123" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="124">    
+  <generalization id="89">    
     <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="8"/>  
+    <end type="TARGET" refId="5"/>  
   </generalization>  
-  <association id="125">    
-    <bendpoint x="-99" y="212"/>    
-    <end type="SOURCE" refId="23" navigable="false">      
-      <attribute id="126" name="currentEvent"/>      
-      <multiplicity id="127" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="24" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="128">    
-    <end type="SOURCE" refId="20"/>    
-    <end type="TARGET" refId="14"/>  
-  </generalization>  
-  <generalization id="129">    
-    <end type="SOURCE" refId="30"/>    
-    <end type="TARGET" refId="24"/>  
-  </generalization>  
-  <generalization id="130">    
-    <end type="SOURCE" refId="36"/>    
-    <end type="TARGET" refId="32"/>  
-  </generalization>  
-  <generalization id="131">    
-    <end type="SOURCE" refId="22"/>    
-    <end type="TARGET" refId="14"/>  
-  </generalization>  
-  <generalization id="132">    
-    <end type="SOURCE" refId="28"/>    
-    <end type="TARGET" refId="24"/>  
-  </generalization>  
-  <association id="133">    
-    <bendpoint x="247" y="124"/>    
-    <end type="SOURCE" refId="23" navigable="false">      
-      <attribute id="134" name="ed"/>      
-      <multiplicity id="135" minimum="0" maximum="1"/>    
+  <association id="90">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="91" name="EDs"/>      
+      <multiplicity id="92" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="136">    
+  <association id="93">    
+    <bendpoint x="942" y="808"/>    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="94" name="treatedPatients"/>      
+      <multiplicity id="95" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="36" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="96">    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="31"/>  
+  </generalization>  
+  <association id="97">    
+    <bendpoint x="-505" y="306"/>    
+    <bendpoint x="-267" y="306"/>    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="98" name="workflow"/>      
+      <multiplicity id="99" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="100">    
+    <bendpoint x="704" y="-32"/>    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="101" name="patientGenerator"/>      
+      <multiplicity id="102" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="103">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="104" name="ed"/>      
+      <multiplicity id="105" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="106">    
+    <bendpoint x="1173" y="799"/>    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="107" name="toBeSeenPatients"/>      
+      <multiplicity id="108" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="36" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="109">    
+    <bendpoint x="629" y="725"/>    
+    <end type="SOURCE" refId="24" navigable="false">      
+      <attribute id="110" name="waitingQueue"/>      
+      <multiplicity id="111" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="36" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="112">    
+    <end type="SOURCE" refId="36" navigable="false">      
+      <attribute id="113" name="state"/>      
+      <multiplicity id="114" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="37" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="115">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="31"/>  
+  </generalization>  
+  <generalization id="116">    
     <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="9"/>  
+    <end type="TARGET" refId="5"/>  
   </generalization>  
-  <generalization id="137">    
-    <end type="SOURCE" refId="17"/>    
-    <end type="TARGET" refId="15"/>  
+  <generalization id="117">    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="19"/>  
   </generalization>  
+  <generalization id="118">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="31"/>  
+  </generalization>  
+  <association id="119">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="120" name="messages"/>      
+      <multiplicity id="121" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="25" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="122">    
+    <bendpoint x="789" y="44"/>    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="123" name="ed"/>      
+      <multiplicity id="124" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="125">    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="24"/>  
+  </generalization>  
+  <association id="126">    
+    <end type="SOURCE" refId="36" navigable="false">      
+      <attribute id="127" name="severityLevel"/>      
+      <multiplicity id="128" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="38" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="129">    
+    <bendpoint x="1258" y="801"/>    
+    <end type="SOURCE" refId="36" navigable="false">      
+      <attribute id="130" name="physician"/>      
+      <multiplicity id="131" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="132">    
+    <bendpoint x="-271" y="105"/>    
+    <bendpoint x="-511" y="105"/>    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="133" name="passedEvents"/>      
+      <multiplicity id="134" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="135">    
+    <bendpoint x="221" y="374"/>    
+    <bendpoint x="256" y="454"/>    
+    <bendpoint x="582" y="451"/>    
+    <bendpoint x="761" y="359"/>    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="136" name="patient"/>      
+      <multiplicity id="137" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="36" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="138">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="139" name="state"/>      
+      <multiplicity id="140" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="141">    
+    <end type="SOURCE" refId="36" navigable="false">      
+      <attribute id="142" name="healthInsurance"/>      
+      <multiplicity id="143" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="39" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="144">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="24"/>  
+  </generalization>  
+  <generalization id="145">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="20"/>  
+  </generalization>  
+  <generalization id="146">    
+    <end type="SOURCE" refId="26"/>    
+    <end type="TARGET" refId="24"/>  
+  </generalization>  
+  <generalization id="147">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <association id="148">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="149" name="workflows"/>      
+      <multiplicity id="150" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    

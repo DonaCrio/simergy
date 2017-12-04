@@ -20,9 +20,9 @@ public class BloodTestExamination extends Examination{
 	 *
 	 * @param workflow the workflow
 	 */
-	public BloodTestExamination(Workflow workflow){
+	public BloodTestExamination(Workflow workflow, double startTime){
 		super(workflow, "BloodTest examination of patient n° " + Integer.toString(workflow.getPatient().getId()), 
-				"BLOODTESTEXAMINATION", ((HealthService)workflow.getEd().getResources().get("MRI").get(0)).getDistribution().generateSample());
+				"BLOODTESTEXAMINATION", startTime, ((HealthService)workflow.getEd().getResources().get("MRI").get(0)).getDistribution().generateSample());
 		resources.put("BLOODTEST",workflow.getEd().getResources().get("BLOODTEST").get(0));
 	}
 	

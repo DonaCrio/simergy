@@ -23,9 +23,9 @@ public class Registration extends Event{
 	 *
 	 * @param workflow the workflow
 	 */
-	public Registration(Workflow workflow) {
+	public Registration(Workflow workflow, double startTime) {
 		super(workflow, "Registration of patient n° " + Integer.toString(workflow.getPatient().getId()),
-				"REGISTRATION", 0);
+				"REGISTRATION", startTime, 0);
 		resources.put("NURSE",null);
 		//Ici on attribue le Physician le moins occupé au patient
 		Physician physician = givePhysician();
@@ -39,7 +39,7 @@ public class Registration extends Event{
 		//Ici on attribue un type de pièce en fonction de l'état du Patient
 		String roomType = workflow.getPatient().getSeverityLevel()==SeverityLevel.L1 
 				||workflow.getPatient().getSeverityLevel()==SeverityLevel.L2?"SHOCKROOM":"BOXROOM";
-		return new Transportation(workflow, roomType);
+		return new Transportation(workflow, endTime, roomType);
 	}
 	
 	/**

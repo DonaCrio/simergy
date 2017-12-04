@@ -22,8 +22,8 @@ public abstract class Examination extends Event{
 	 * @param type the examination's type
 	 * @param duration the examination's duration
 	 */
-	public Examination(Workflow workflow, String name, String type, int duration) {
-		super(workflow, name, type, duration);
+	public Examination(Workflow workflow, String name, String type, double startTime, double duration) {
+		super(workflow, name, type, startTime, duration);
 		workflow.getPatient().setState(PatientState.E);
 	}
 	
@@ -33,6 +33,6 @@ public abstract class Examination extends Event{
 	public Event createNextEvent(){
 		String roomType = workflow.getPatient().getSeverityLevel()==SeverityLevel.L1 
 				||workflow.getPatient().getSeverityLevel()==SeverityLevel.L2?"SHOCKROOM":"BOXROOM";
-		return new Consultation(workflow, roomType, null);
+		return new Consultation(workflow, endTime, roomType, null);
 	}
 }

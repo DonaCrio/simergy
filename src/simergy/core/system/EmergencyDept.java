@@ -13,6 +13,7 @@ import simergy.core.resources.*;
 import simergy.exceptions.*;
 import simergy.core.patients.*;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class EmergencyDept.
  * 
@@ -22,33 +23,46 @@ import simergy.core.patients.*;
  */
 public class EmergencyDept implements Serializable{
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 6699762321132104984L;
 
+	/** The name. */
 	private String name;
+	
+	/** The workflows. */
 	private ArrayList<Workflow> workflows;
+	
+	/** The patients. */
 	private ArrayList<Patient> patients;
-	private TimeMachine clock;
-	private PatientGenerator generator;
+	
+	/** The time. */
+	private double time;
+	
+	/** The resources. */
 	private HashMap<String,ArrayList<Resource>> resources;
+	
+	/** The resource factory. */
 	private ResourceFactory resourceFactory;
+	
+	/** The patient generator. */
+	PatientGenerator patientGenerator;
 	
 	/**
 	 * Instantiates a new emergency department.
 	 * Sets the name and initialise all the arrays containing the workflows and the patients.
 	 * Generates the HashMap describing the resources present in the ED.
-	 * 
-	 * @see simergy.core.system.EmergencyDept#generateResources
 	 *
 	 * @param name the department's name
+	 * @see simergy.core.system.EmergencyDept#generateResources
 	 */
 	public EmergencyDept(String name) {
 		this.name = name;
 		this.workflows = new ArrayList<Workflow>();
 		this.patients = new ArrayList<Patient>();
-		this.clock = new TimeMachine();
-		this.generator = new PatientGenerator();
+		this.time = 0;
 		this.resources = generateResources();
 		this.resourceFactory = new ResourceFactory();
+		this.patientGenerator = new PatientGenerator(this);
 	}
 	
 	/**
@@ -75,38 +89,13 @@ public class EmergencyDept implements Serializable{
 	/**
 	 * Updates the time in the ED. Then it checks for a new patient arrival.
 	 * Then all the workflows are updated.
-	 * 
+	 *
+	 * @param resourceType the resource type
+	 * @param patient the patient
+	 * @return true, if is available
 	 * @see simergy.core.system.TimeMachine#toNextTime()
 	 * @see simergy.events.Workflow#update()
 	 */
-	public void update(){
-		clock.toNextTime();
-		ArrayList<Patient> newPatients = generator.getPatients(clock.getTime());
-		if(newPatients!=null){
-			for(Patient p : newPatients){
-				addWorkflow(new Workflow(this, p));
-			}
-		}
-		for(Workflow workflow : workflows){
-			if(workflow.getState()==EventState.IP){
-				workflow.update();
-			}
-		}
-	}
-	
-	/**
-	 * @deprecated
-	 * A method used only to perform tests on workflows
-	 * 
-	 */
-	public void updateTest(){
-		clock.toNextTime();
-		for(Workflow workflow : workflows){
-			if(workflow.getState()==EventState.IP){
-				workflow.update();
-			}
-		}
-	}
 	
 	/**
 	 * Checks if a resource is available for a patient.
@@ -190,24 +179,19 @@ public class EmergencyDept implements Serializable{
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	/*
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "EmergencyDept [patients=" + patients + ", clock=" + clock + ", resources="
+		return "EmergencyDept [patients=" + patients + ", time=" + time + ", resources="
 				+ resources + "]";
 	}
 /* Getters and Setters */
 	
-	/**
- * Gets the clock.
- *
- * @return the clock
- */
-public TimeMachine getClock(){
-		return clock;
-	}
 
 
 	/**
@@ -228,38 +212,86 @@ public TimeMachine getClock(){
 		return workflows;
 	}
 
-	public void setClock(TimeMachine clock) {
-		this.clock = clock;
-		
-	}
-
-	public void setPatientGenerator(PatientGenerator generator) {
-		this.generator = generator;
-		
-	}
 	
+	/**
+	 * Sets the workflows.
+	 *
+	 * @param workflows the new workflows
+	 */
 	public void setWorkflows(ArrayList<Workflow> workflows){
 		this.workflows = workflows;
 	}
 
+	/**
+	 * Gets the patients.
+	 *
+	 * @return the patients
+	 */
 	public ArrayList<Patient> getPatients() {
 		return patients;
 	}
 
+	/**
+	 * Gets the name.
+	 *
+	 * @return the name
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * Sets the name.
+	 *
+	 * @param name the new name
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	/**
+	 * Gets the resource factory.
+	 *
+	 * @return the resource factory
+	 */
 	public ResourceFactory getResourceFactory() {
 		return resourceFactory;
 	}
 
+	/**
+	 * Gets the time.
+	 *
+	 * @return the time
+	 */
+	public double getTime() {
+		return time;
+	}
+
+	/**
+	 * Sets the time.
+	 *
+	 * @param time the new time
+	 */
+	public void setTime(double time) {
+		this.time = time;
+	}
+
+	/**
+	 * Sets the patients.
+	 *
+	 * @param patients the new patients
+	 */
 	public void setPatients(ArrayList<Patient> patients) {
 		this.patients = patients;
+	}
+
+	/**
+	 * Gets the patient generator.
+	 *
+	 * @return the patient generator
+	 */
+	public PatientGenerator getPatientGenerator() {
+		return patientGenerator;
 	}
 	
 }

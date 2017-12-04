@@ -5,7 +5,7 @@
 package simergy.tests;
 
 
-import java.util.ArrayList;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 
@@ -18,7 +18,9 @@ public class FirstScenarioTest {
 
 	@Test
 	public void PassIfOnePatientIsFullyTreatedThenReleased() {
+		SimErgy sys = new SimErgy();
 		EmergencyDept ed = new EmergencyDept("myED");
+		sys.addED(ed);
 		ed.addResource(new Physician(0, "Said","Sammy"));
 		ed.addResource(new Physician(1, "Guerzider","Antoine"));
 		ed.addResource(new Physician(2, "Said","Antoine"));
@@ -41,11 +43,10 @@ public class FirstScenarioTest {
 		ed.addResource(new Radiography(19));
 		Patient patient = new Patient(SeverityLevel.L4);
 		patient.setHealthInsurance(HealthInsurance.SILVER);
-		ed.addWorkflow(new Workflow(ed,patient));
-		while(ed.getWorkflows().get(0).getPatient().getState()!=PatientState.R){
-			ed.updateTest();
-			System.out.println("Time = "+ ed.getClock().getTime());
-			System.out.println(ed.getWorkflows().get(0).getCurrentEvent().toString()+"\n");
-		}
+		ed.addWorkflow(new Workflow(ed,patient,0));
+		sys.simulationNoAutomation(ed, 500);
+		assertTrue(ed.getWorkflows().get(0).getCurrentEvent().getType()=="OUTCOME");
+		System.out.println("Time = "+ ed.getTime());
+		System.out.println(ed.getWorkflows().get(0).getCurrentEvent().toString()+"\n");
 	}
 }

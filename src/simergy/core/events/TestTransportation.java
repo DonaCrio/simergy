@@ -18,8 +18,8 @@ public class TestTransportation extends Event{
 	 *
 	 * @param workflow the workflow
 	 */
-	public TestTransportation(Workflow workflow) {
-		super(workflow, "TestTransportation of patient n° " + Integer.toString(workflow.getPatient().getId()), "TESTTRANSPORTATION", 5);
+	public TestTransportation(Workflow workflow, double startTime) {
+		super(workflow, "TestTransportation of patient n° " + Integer.toString(workflow.getPatient().getId()), "TESTTRANSPORTATION", startTime, 5);
 		this.resources.put("TRANSPORTER",null);
 	}
 	
@@ -30,11 +30,11 @@ public class TestTransportation extends Event{
 		((HealthService)workflow.getEd().getResources().get(workflow.getPatient().getPrescription()).get(0)).newArrival(workflow.getPatient());
 		switch(workflow.getPatient().getPrescription()){
 		case "BLOODTEST":
-			return new BloodTestExamination(workflow);
+			return new BloodTestExamination(workflow, endTime);
 		case "MRI":
-			return new MRIExamination(workflow);
+			return new MRIExamination(workflow, endTime);
 		case "RADIOGRAPHY":
-			return new RadiographyExamination(workflow);
+			return new RadiographyExamination(workflow, endTime);
 		default:
 			return null;
 		}

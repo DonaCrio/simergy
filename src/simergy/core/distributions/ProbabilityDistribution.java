@@ -17,5 +17,5 @@ public interface ProbabilityDistribution extends Serializable{
 	 *
 	 * @return the sample as an integer
 	 */
-	public int generateSample();
+	public double generateSample();
 }

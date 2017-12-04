@@ -24,7 +24,7 @@ public class Deterministic implements ProbabilityDistribution{
 	/*
 	 * @see simergy.core.distributions.ProbabilityDistribution#generateSample()
 	 */
-	public int generateSample(){
-		return (int)Math.round(delta);
+	public double generateSample(){
+		return delta;
 	}
 }

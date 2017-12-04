@@ -4,6 +4,8 @@
  */
 package simergy.tests;
 
+import static org.junit.Assert.*;
+
 import org.junit.Test;
 
 import simergy.core.events.Workflow;
@@ -13,12 +15,15 @@ import simergy.core.patients.PatientState;
 import simergy.core.patients.SeverityLevel;
 import simergy.core.resources.*;
 import simergy.core.system.EmergencyDept;
+import simergy.core.system.SimErgy;
 
 public class MultiplePatientsTestScenario {
 
 	@Test
 	public void PassIfTwoPatientsAreTreatedThenReleased() {
+		SimErgy sys = new SimErgy();
 		EmergencyDept ed = new EmergencyDept("myED");
+		sys.addED(ed);
 		ed.addResource(new Physician(0, "Said","Sammy"));
 		ed.addResource(new Physician(1, "Guerzider","Antoine"));
 		ed.addResource(new Physician(2, "Said","Antoine"));
@@ -43,12 +48,14 @@ public class MultiplePatientsTestScenario {
 		patient1.setHealthInsurance(HealthInsurance.SILVER);
 		Patient patient2 = new Patient(SeverityLevel.L4);
 		patient2.setHealthInsurance(HealthInsurance.GOLD);
-		ed.addWorkflow(new Workflow(ed,patient1));
-		ed.addWorkflow(new Workflow(ed,patient2));
+		ed.addWorkflow(new Workflow(ed,patient1,0));
+		ed.addWorkflow(new Workflow(ed,patient2,0));
 		//for(int i=0;i<20;i++){
 		while(ed.getWorkflows().get(0).getPatient().getState()!=PatientState.R || ed.getWorkflows().get(1).getPatient().getState()!=PatientState.R){
-			ed.updateTest();
-			System.out.println("Time = "+ ed.getClock().getTime());
+			sys.simulationNoAutomation(ed,500);
+			assertTrue(ed.getWorkflows().get(0).getCurrentEvent().getType()=="OUTCOME");
+			assertTrue(ed.getWorkflows().get(1).getCurrentEvent().getType()=="OUTCOME");
+			System.out.println("Time = "+ ed.getTime());
 			System.out.println(ed.getWorkflows().get(0).getCurrentEvent().toString());
 			System.out.println(ed.getWorkflows().get(1).getCurrentEvent().toString());
 		}

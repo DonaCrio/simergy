@@ -24,14 +24,14 @@ public class Consultation extends Event{
 	 * @param roomType the used room type
 	 * @param room the used room
 	 */
-	public Consultation(Workflow workflow, String roomType, Room room) {
-		super(workflow, "Consultation of patient n° " + Integer.toString(workflow.getPatient().getId()), "CONSULTATION", new Uniform(5,20).generateSample());
+	public Consultation(Workflow workflow, double startTime, String roomType, Room room) {
+		super(workflow, "Consultation of patient n° " + Integer.toString(workflow.getPatient().getId()), "CONSULTATION", startTime, new Uniform(5,20).generateSample());
 		resources.put("PHYSICIAN", null);
 		resources.put(roomType, room);
 		if(room == null){
 			secondTime = true;
 		}else{
-			workflow.setConsultationTime(workflow.getEd().getClock().getTime());
+			workflow.setConsultationTime(workflow.getEd().getTime());
 		}
 	}
 	/**
@@ -46,8 +46,7 @@ public class Consultation extends Event{
 		 */
 		try{
 			assignResources();
-			startTime = workflow.getEd().getClock().getTime();
-			workflow.setConsultationTime(workflow.getEd().getClock().getTime());
+			workflow.setConsultationTime(occurenceTime);
 			endTime = startTime + duration;
 			workflow.getPatient().setState(PatientState.V);
 			state = EventState.IP;
@@ -64,9 +63,9 @@ public class Consultation extends Event{
 	public Event createNextEvent(){
 		if(workflow.getPatient().getPrescription()=="NONE"){
 			workflow.endWorkflow();
-			return new Outcome(workflow);
+			return new Outcome(workflow, endTime);
 		}else{
-			return new TestTransportation(workflow);
+			return new TestTransportation(workflow, endTime);
 		}
 	}
 	

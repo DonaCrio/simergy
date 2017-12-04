@@ -18,6 +18,7 @@ public abstract class HealthService extends NonHumanResource{
 	private static final long serialVersionUID = 1295898712641211076L;
 
 	private ArrayList<Patient> waitingQueue;
+	private Patient currentPatient;
 	private ProbabilityDistribution distribution;
 	
 	/**
@@ -52,7 +53,7 @@ public abstract class HealthService extends NonHumanResource{
 	 */
 	@Override
 	public Patient nextPatient(){
-		return waitingQueue.size()==0?null:waitingQueue.get(0);
+		return currentPatient;
 	}
 	
 	/*
@@ -61,6 +62,7 @@ public abstract class HealthService extends NonHumanResource{
 	@Override
 	public void hasBeenTreated(Patient patient){
 		waitingQueue.remove(patient);
+		currentPatient = waitingQueue.size()==0?null:waitingQueue.get(0);
 	}
 
 	/**

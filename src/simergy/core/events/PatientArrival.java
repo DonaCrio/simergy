@@ -18,13 +18,15 @@ public class PatientArrival extends Event{
 	 */
 	public PatientArrival(Workflow workflow) {
 		super(workflow, "Arrival of patient n° " + Integer.toString(workflow.getPatient().getId()),
-				"PATIENTARRIVAL", 0);
+				"PATIENTARRIVAL", workflow.getStartTime(), 0);
 	}
 	
 	/*
 	 * @see simergy.events.EventOperations#createNextEvent()
 	 */
 	public Event createNextEvent(){
-		return new Registration(workflow);
+		//Lorsque la transition d'évennement a lieu, on crée un nouvel évennement PatientArrival dans un nouveau workflow.
+		workflow.getEd().getPatientGenerator().giveNewPatient(endTime, workflow.getPatient().getSeverityLevel());
+		return new Registration(workflow, endTime);
 	}
 }

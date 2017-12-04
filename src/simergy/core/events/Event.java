@@ -33,10 +33,10 @@ public abstract class Event implements EventOperations, Serializable{
 	private int id;
 	protected String name;
 	private String type;
-	protected int startTime;
-	protected int occurenceTime;
-	protected int endTime;
-	protected int duration;
+	protected double startTime;
+	protected double endTime;
+	protected double duration;
+	protected double occurenceTime;
 	protected HashMap<String,Resource> resources;
 	protected EventState state;
 	
@@ -49,41 +49,22 @@ public abstract class Event implements EventOperations, Serializable{
 	 * @param type the event's type
 	 * @param duration the event's duration
 	 */
-	public Event(Workflow workflow, String name, String type, int duration){
+	public Event(Workflow workflow, String name, String type, double startTime, double duration){
 		this.workflow = workflow;
 		this.id = i++;
 		this.name = name;
 		this.type = type;
-		this.occurenceTime = workflow.getEd().getClock().getTime();
+		this.startTime = startTime;
 		this.duration = duration;
 		this.resources = new HashMap<String,Resource>();
 		this.state = EventState.NS;
-	}
-	
-/*
- * 
- * @see simergy.core.events.EventOperations#update()
- */
-/*
- * Ici j'ai fait le choix de créer une myriade de fonctions aux noms explicites pour bien séparer les étapes de synchronisation qui peuvent différer d'un évennement à un autre
- */
-	public void update(){
-		try{
-			// Si l'évennement n'a pas commencé et que tout est ok, on passe l'état à IP("In progress") et on assigne les ressources
-			if(state==EventState.NS && requirementsAllGood()) {
-				startEvent();
-			}
-			// Si l'évennement a commencé, on vérifie si sa date de fin coincide avec la date actuelle. Si oui on termine l'event
-			if(state == EventState.IP && workflow.getEd().getClock().getTime() == endTime) {
-				endEvent();
-			}
-		}catch(EventStartFailedException e){}
 	}
 	
 	/*
 	 * @see simergy.events.EventOperations#requirementsAllGood()
 	 */
 	public boolean requirementsAllGood(){
+		// On verifie l'état de chaque ressource nécessaire et on renvoie false si l'une d'elles n'est pas disponible.
 		boolean allGood = true;
 		for(String resourceType : resources.keySet()){
 			if(resources.get(resourceType)==null){
@@ -108,7 +89,6 @@ public abstract class Event implements EventOperations, Serializable{
 		 */
 		try{
 			assignResources();
-			startTime = workflow.getEd().getClock().getTime();
 			endTime = startTime + duration;
 			workflow.getPatient().setState(PatientState.V);
 			state = EventState.IP;
@@ -169,19 +149,18 @@ public abstract class Event implements EventOperations, Serializable{
 	 */
 	@Override
 	public String toString() {
-		return "Event [id=" + id + ", name=" + name + ", type=" + type + ", occurenceTime="
-				+ occurenceTime + ", startTime=" + startTime + ", endTime=" + endTime + ", patient=" + workflow.getPatient()
-				+ ", ressources=" + resources + ", state=" + state + "]";
+		return "Event [id=" + id + ", name=" + name + ", type=" + type + ", startTime=" + startTime + ", endTime=" + endTime + ", patient=" + workflow.getPatient().getId()
+				+ ", state=" + state + "]";
 	}
 	
 /* Getters and Setters */
 	
 	/**
- * Gets the ressources.
- *
- * @return the ressources
- */
-public HashMap<String, Resource> getRessources() {
+	 * Gets the ressources.
+	 *
+	 * @return the ressources
+	 */
+	public HashMap<String, Resource> getRessources() {
 		return resources;
 	}
 
@@ -217,16 +196,16 @@ public HashMap<String, Resource> getRessources() {
 	 *
 	 * @return the end time
 	 */
-	public int getEndTime() {
+	public double getEndTime() {
 		return endTime;
 	}
 
-	public int getStartTime() {
+	public double getStartTime() {
 		return startTime;
 	}
 
-	public void setStartTime(int startTime) {
-		this.startTime = startTime;
+	public void setStartTime(double d) {
+		this.startTime = d;
 	}
 
 	public void setEndTime(int endTime) {
@@ -235,5 +214,17 @@ public HashMap<String, Resource> getRessources() {
 
 	public void setState(EventState state) {
 		this.state = state;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public double getOccurenceTime() {
+		return occurenceTime;
+	}
+
+	public void setOccurenceTime(double occurenceTime) {
+		this.occurenceTime = occurenceTime;
 	}
 }

@@ -11,17 +11,6 @@ import simergy.exceptions.*;
  *
  */
 public interface EventOperations {
-
-	/**
-	 * Updates the event.
-	 * First it checks if the event is started or not. If not and if all the requirements are good, it starts the event.
-	 * Then it checks if the event is in progress and if the ED time is equal to the event's end time. If that's the case, it ends the event.
-	 * 
-	 * @see simergy.events.EventOperations#requirementsAllGood()
-	 * @see simergy.events.EventOperations#startEvent()
-	 * @see simergy.events.EventOperations#endEvent()
-	 */
-	public void update();
 	
 	/**
 	 * Checks if all the requirements to start an event are good.

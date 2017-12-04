@@ -20,9 +20,9 @@ public class Transportation extends Event{
 	 * @param workflow the workflow
 	 * @param roomType the room type
 	 */
-	public Transportation(Workflow workflow, String roomType) {
+	public Transportation(Workflow workflow, double startTime, String roomType) {
 		super(workflow, "Transportation of patient n° " + Integer.toString(workflow.getPatient().getId()), 
-				"TRANSPORTATION", 2);
+				"TRANSPORTATION", startTime, 2);
 		resources.put("NURSE",null);
 		resources.put(roomType,null);
 		this.roomType = roomType;
@@ -32,7 +32,7 @@ public class Transportation extends Event{
 	 * @see simergy.core.events.EventOperations#createNextEvent()
 	 */
 	public Event createNextEvent(){
-		return new Consultation(workflow, roomType, (Room)resources.get(roomType));
+		return new Consultation(workflow, endTime, roomType, (Room)resources.get(roomType));
 	}
 	
 	/*

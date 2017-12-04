@@ -18,17 +18,11 @@ public class Outcome extends Event{
 	 *
 	 * @param workflow the workflow
 	 */
-	public Outcome(Workflow workflow){
-		super(workflow, "Outcome of patient n° " + Integer.toString(workflow.getPatient().getId()), "OUTCOME",0);
+	public Outcome(Workflow workflow, double startTime){
+		super(workflow, "Outcome of patient n° " + Integer.toString(workflow.getPatient().getId()), "OUTCOME", startTime, 0);
 		workflow.getPatient().getPhysician().patientTreated(workflow.getPatient());
-		workflow.setEndTime(workflow.getEd().getClock().getTime());
+		workflow.setEndTime(startTime);
 	}
-
-	/*
-	 * @see simergy.core.events.Event#update()
-	 */
-	@Override
-	public void update(){}
 	
 	/*
 	 * @see simergy.core.events.EventOperations#createNextEvent()
@@ -40,7 +34,7 @@ public class Outcome extends Event{
 	 */
 	@Override
 	public String toString() {
-		return "Outcome [name=" + name + ", occurenceTime=" + occurenceTime + ", charges=" + workflow.getPatient().getCharges() + "]";
+		return "Outcome [name=" + name  + ", charges=" + workflow.getPatient().getCharges() + "]";
 	}
 	
 	

@@ -20,8 +20,8 @@ public class StartEventTest {
 		EmergencyDept ed = new EmergencyDept("myED");
 		ed.addResource(new Nurse(0, "Blanco", "Camille"));
 		ed.addResource(new Physician(1, "Said","Sammy"));
-		Workflow workflow = new Workflow(ed, new Patient(SeverityLevel.L5));
-		workflow.setCurrentEvent(new Registration(workflow));
+		Workflow workflow = new Workflow(ed, new Patient(SeverityLevel.L5),0);
+		workflow.setCurrentEvent(new Registration(workflow,0));
 		try{
 			workflow.getCurrentEvent().startEvent();
 		}catch(EventStartFailedException e){}
@@ -32,9 +32,9 @@ public class StartEventTest {
 	@Test
 	public void PassIfAllErrorsAreThrownCorrectly() {
 		EmergencyDept ed = new EmergencyDept("myED");
-		Workflow workflow = new Workflow(ed, new Patient(SeverityLevel.L5));
+		Workflow workflow = new Workflow(ed, new Patient(SeverityLevel.L5),0);
 		ed.addResource(new Physician(0, "Said","Sammy"));
-		workflow.setCurrentEvent(new Registration(workflow));
+		workflow.setCurrentEvent(new Registration(workflow,0));
 		try{
 			workflow.getCurrentEvent().startEvent();
 		}catch(EventStartFailedException e){
@@ -47,8 +47,8 @@ public class StartEventTest {
 		EmergencyDept ed = new EmergencyDept("myED");
 		ed.addResource(new Nurse(0, "Blanco", "Camille"));
 		ed.addResource(new Physician(1, "Said","Sammy"));
-		Workflow workflow = new Workflow(ed, new Patient(SeverityLevel.L5));
-		workflow.setCurrentEvent(new Registration(workflow));
+		Workflow workflow = new Workflow(ed, new Patient(SeverityLevel.L5),0);
+		workflow.setCurrentEvent(new Registration(workflow,0));
 		assertTrue(workflow.getCurrentEvent().requirementsAllGood());
 	}
 }

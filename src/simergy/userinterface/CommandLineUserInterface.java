@@ -344,7 +344,7 @@ public class CommandLineUserInterface {
 						String severityLevel = st.nextToken();
 						String healthInsurance = st.nextToken();
 						Patient patient = new Patient(name,surname,severityLevel,healthInsurance);
-						ed.addWorkflow(new Workflow(ed, patient));
+						ed.addWorkflow(new Workflow(ed, patient, 0));
 						System.out.println(patient.getName() + " was successfully added to " + ed.getName() + ".");
 					}else{
 						System.out.println("ERROR : This ED doesn't exists.");
@@ -384,13 +384,12 @@ public class CommandLineUserInterface {
 							int endTime = Integer.parseInt(st.nextToken());
 							ArrayList<Double> KPIs = sys.simulation(ed, endTime);
 							System.out.println("\n# Key performance indicators for ED : " + ed.getName() + "\n"
-									+ "### Patients Released : " + KPIs.get(2) + "/" + ed.getWorkflows().size() + "\n"
-									+ "### DTDT = " +  KPIs.get(0) + "\n"
-									+ "### LOS = " + KPIs.get(1));
+									+ "### Patients Released : " + KPIs.get(0) + "/" + KPIs.get(1) + "\n"
+									+ "### DTDT = " +  KPIs.get(2) + "\n"
+									+ "### LOS = " + KPIs.get(3));
 						}catch(NumberFormatException e){
 							System.out.println("ERROR : <SimulationTime> must be an integer.");
 						}
-						
 					}else{
 						System.out.println("ERROR : This ED doesn't exists.");
 					}
@@ -495,11 +494,11 @@ public class CommandLineUserInterface {
 					+ "<DistType> and <DistParams> are not mandatory. If not specified, the distribution will be Uniform(15,90)");
 			
 		}if(param.contentEquals("addNurse") || param.contentEquals("f") || param.contentEquals("ed")){
-			System.out.println("addNurse <EDname>,<NurseName>,<NurseSurname> : adds a nurse with given name and surname to an ED with given name.\n"
+			System.out.println("\n# addNurse <EDname>,<NurseName>,<NurseSurname> : adds a nurse with given name and surname to an ED with given name.\n"
 					+ "<NurseName> and <NurseSurname> are not mandatory. If not specified, the name and surname will be 'nurseN' where N is the nurse's ID");
 		
 		}if(param.contentEquals("addPhysi") || param.contentEquals("f") || param.contentEquals("ed")){
-			System.out.println("addPhysi <EDname>,<PhysiName>,<PhysiSurname> : adds a physician with given name and surname to an ED with given name.\n"
+			System.out.println("\n# addPhysi <EDname>,<PhysiName>,<PhysiSurname> : adds a physician with given name and surname to an ED with given name.\n"
 					+ "<PhysiName> and <PhysiSurname> are not mandatory. If not specified, the name and surname will be 'physiN' where N is the physician's ID");
 		
 		}if(param.contentEquals("setL1arrivalDist") || param.contentEquals("f") || param.contentEquals("ed")){
@@ -538,7 +537,7 @@ public class CommandLineUserInterface {
 		res += border + "\n"
 				+ "### Informations : " + name + " ###\n"
 				+ border;
-		res += "\n\n# Time : " + ed.getClock().computeTime();
+		res += "\n\n# Time : " + ed.getTime();
 		res += "\n\n# Patients (" + ed.getPatients().size() + ") :";
 		for(Patient p : ed.getPatients()){
 			res += "\n### " + p;

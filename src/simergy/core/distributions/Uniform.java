@@ -27,9 +27,9 @@ public class Uniform implements ProbabilityDistribution{
 	/*
 	 * @see simergy.core.distributions.ProbabilityDistribution#generateSample()
 	 */
-	public int generateSample(){
+	public double generateSample(){
 		double a = Math.random();
-		return (int)Math.round(a*(r-l)+l);
+		return a*(r-l)+l;
 	}
 	
 }

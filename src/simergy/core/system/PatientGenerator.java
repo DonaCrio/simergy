@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import simergy.core.patients.*;
 import simergy.core.distributions.*;
+import simergy.core.events.Workflow;
 
 /**
  * The Class PatientGenerator.
@@ -19,51 +20,26 @@ public class PatientGenerator implements Serializable{
 
 	private static final long serialVersionUID = -9180828970654076297L;
 	
-	private HashMap<SeverityLevel,Integer> nextPatients;
+	private EmergencyDept ed;
 	private HashMap<SeverityLevel,ProbabilityDistribution> distributions;
-	private boolean patientsInitialized;
 	
 	/**
 	 * Instantiates a new patient generator.
 	 * 
 	 */
-	public PatientGenerator(){
+	public PatientGenerator(EmergencyDept ed){
+		this.ed = ed;
 		this.distributions = new HashMap<SeverityLevel,ProbabilityDistribution>();
 		for(SeverityLevel lvl : SeverityLevel.values()){
 			distributions.put(lvl, lvl.distribution);
 		}
-		this.nextPatients = new HashMap<SeverityLevel,Integer>();
-		patientsInitialized = false;
+		
 	}
 	
-	/**
-	 * Generates a HashMap<SeverityLevel,Integer>. The integer represents the time (in minutes) of arrival of the next patient with the considered severity level
-	 */
 	public void initializePatients(){
 		for(SeverityLevel lvl : SeverityLevel.values()){
-			nextPatients.put(lvl,distributions.get(lvl).generateSample());
+			ed.addWorkflow(new Workflow(ed, new Patient(lvl), distributions.get(lvl).generateSample()));
 		}
-		patientsInitialized = true;
-	}
-	
-	/**
-	 * Gets the patients arriving at a time.
-	 *
-	 * @param time the time
-	 * @return the patients arriving
-	 */
-	public ArrayList<Patient> getPatients(int time){
-		if(!patientsInitialized){
-			initializePatients();
-		}
-		ArrayList<Patient> newPatients = new ArrayList<Patient>();
-		for(SeverityLevel lvl : nextPatients.keySet()){
-			if(nextPatients.get(lvl) == time){
-				newPatients.add(new Patient(lvl));
-				nextPatients.put(lvl, time+lvl.distribution.generateSample());
-			}
-		}
-		return newPatients;
 	}
 	
 	/**
@@ -88,27 +64,22 @@ public class PatientGenerator implements Serializable{
 			return false;
 		}
 	}
-
-	/*
-	 * @see java.lang.Object#toString()
+	
+	/**
+	 * Gives the arrival time of the next patient of a given severity level
+	 *
+	 * @param time the time of simulation
+	 * @parma lvl the severity level
+	 * @return the next patients
 	 */
-	@Override
-	public String toString() {
-		return "PatientGenerator [nextPatients=" + nextPatients + "]";
+	public void giveNewPatient(double time, SeverityLevel lvl){
+		ed.addWorkflow(new Workflow(ed, new Patient(lvl), time+distributions.get(lvl).generateSample()));
 	}
 
 	/**
-	 * Gets the next patients.
-	 *
-	 * @return the next patients
+	 * Gets the distributions associated to the severity levels.
+	 * @return HashMap>SeverityLevel,ProbabilityDistribution>
 	 */
-	public HashMap<SeverityLevel, Integer> getNextPatients() {
-		if(!patientsInitialized){
-			initializePatients();
-		}
-		return nextPatients;
-	}
-
 	public HashMap<SeverityLevel, ProbabilityDistribution> getDistributions() {
 		return distributions;
 	}
