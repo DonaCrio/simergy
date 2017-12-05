@@ -376,13 +376,53 @@ public class CommandLineUserInterface {
 					System.out.println("ERROR : Requires 3 arguments (<EDname>,<PatientID>,<HealthInsurance>).");
 				}
 				
+			}else if(cmd.contentEquals("executeEvent")){
+				if(st.countTokens()==1){
+					EmergencyDept ed = sys.getEDs().get(st.nextToken());
+					if(ed!=null){
+						ArrayList<Double> KPIs = sys.executeNextEvent(ed);
+						System.out.println("\n# Key performance indicators for ED : " + ed.getName() + "\n"
+								+ "### Patients Released : " + KPIs.get(0) + "/" + KPIs.get(1) + "\n"
+								+ "### DTDT = " +  KPIs.get(2) + "\n"
+								+ "### LOS = " + KPIs.get(3));
+					}else{
+						System.out.println("ERROR : This ED doesn't exists.");
+					}
+					
+				}else{
+					System.out.println("Type 'executeEvent <EDName> to execute next Event in the Ed with given name.\n"
+							+ "List of EDs present in the system :\n");
+					for(String name : sys.getEDs().keySet()){
+						System.out.println("# " + name);
+					}
+				}
+				
+				
 			}else if(cmd.contentEquals("simulate")){
-				if(st.countTokens()==2){
+				if(st.countTokens()==3){
 					EmergencyDept ed = sys.getEDs().get(st.nextToken());
 					if(ed!=null){
 						try{
 							int endTime = Integer.parseInt(st.nextToken());
-							ArrayList<Double> KPIs = sys.simulation(ed, endTime);
+							boolean enableGen = st.nextToken().equalsIgnoreCase("ACTIVATE");
+							ArrayList<Double> KPIs = sys.simulation(ed, endTime, enableGen);
+							System.out.println("\n# Key performance indicators for ED : " + ed.getName() + "\n"
+									+ "### Patients Released : " + KPIs.get(0) + "/" + KPIs.get(1) + "\n"
+									+ "### DTDT = " +  KPIs.get(2) + "\n"
+									+ "### LOS = " + KPIs.get(3));
+						}catch(NumberFormatException e){
+							System.out.println("ERROR : <SimulationTime> must be an integer.");
+						}
+					}else{
+						System.out.println("ERROR : This ED doesn't exists.");
+					}
+					
+				}else if(st.countTokens()==2){
+					EmergencyDept ed = sys.getEDs().get(st.nextToken());
+					if(ed!=null){
+						try{
+							int endTime = Integer.parseInt(st.nextToken());
+							ArrayList<Double> KPIs = sys.simulation(ed, endTime, false);
 							System.out.println("\n# Key performance indicators for ED : " + ed.getName() + "\n"
 									+ "### Patients Released : " + KPIs.get(0) + "/" + KPIs.get(1) + "\n"
 									+ "### DTDT = " +  KPIs.get(2) + "\n"
@@ -395,7 +435,8 @@ public class CommandLineUserInterface {
 					}
 					
 				}else{
-					System.out.println("Type 'simulation <EDName>,<SimulationTime>' to simulate Ed with given name during given time.\n"
+					System.out.println("Type 'simulation <EDName>,<SimulationTime>,ACTIVATE' to simulate Ed with given name during given time.\n"
+							+ "Type ACTIVATE if the simulation enables patient generation."
 							+ "List of EDs present in the system :\n");
 					for(String name : sys.getEDs().keySet()){
 						System.out.println("# " + name);
@@ -419,7 +460,17 @@ public class CommandLineUserInterface {
 			}else if(cmd.contentEquals("display")){
 				if(st.countTokens()==1){
 					String name = st.nextToken();
-					System.out.println(sys.getEDs().get(name)==null?"ERROR : This ED doesn't exists.":displayED(sys.getEDs().get(name)));
+					EmergencyDept ed = sys.getEDs().get(name);
+					if(ed!=null){
+						System.out.println(displayED(sys.getEDs().get(name)));
+					}else{
+						System.out.println("ERROR : This ED doesn't exist.\n"
+								+ "List of EDs present in the system :\n");
+					for(String n : sys.getEDs().keySet()){
+						System.out.println("# " + n);
+					}
+					}
+					
 				}else{
 					System.out.println("Type 'display <EDName>' to display Ed with given name.\n"
 							+ "List of EDs present in the system :\n");
@@ -439,7 +490,7 @@ public class CommandLineUserInterface {
 	
 	public static void help(String param){
 		if(param.contentEquals("")){
-			System.out.println("Welcome into SimErgy's help.\n"
+			System.out.println("Welcome into SimErgy's help.\n\n"
 					+ "To get the full commands guide type : 'help f'.\n"
 					+ "To get the save/load commands guide type : 'help s'\n"
 					+ "To get the ED command guide type : 'help ed'\n"
@@ -538,16 +589,16 @@ public class CommandLineUserInterface {
 				+ "### Informations : " + name + " ###\n"
 				+ border;
 		res += "\n\n# Time : " + ed.getTime();
-		res += "\n\n# Patients (" + ed.getPatients().size() + ") :";
-		for(Patient p : ed.getPatients()){
-			res += "\n### " + p;
-		}
 		res += "\n\n# Resources :";
 		for(String resourceType : ed.getResources().keySet()){
 			res += "\n### " + resourceType + " (" + ed.getResources().get(resourceType).size() + ") : ";
 			for(Resource r : ed.getResources().get(resourceType)){
 				res += r.getName() + ", ";
 			}
+		}
+		res += "\n\n# Patients (" + ed.getPatients().size() + ") :";
+		for(Patient p : ed.getPatients()){
+			res += "\n### " + p;
 		}
 		return res;
 	}

@@ -52,6 +52,25 @@ public class SimErgy implements Serializable{
 		EDs.put(ed.getName(), ed);
 	}
 	
+	public ArrayList<Double> executeNextEvent(EmergencyDept ed){
+		ed.getPatientGenerator().setEnableGen(false);
+		ArrayList<Event> eventQueue = new ArrayList<Event>();
+		ArrayList<Integer> enabledEvents = new ArrayList<Integer>();
+		enabledEvents = updateEnabledEvents(ed);
+		eventQueue = updateEventQueue(enabledEvents, ed);
+		if(eventQueue.size() != 0){
+			Event e = eventQueue.get(0);
+			executeEvent(e);
+			ed.setTime(e.getOccurenceTime());
+			System.out.println("Time : " + ed.getTime());
+			System.out.println("Executed event : " + e);
+		}else{
+			System.out.println("ERROR : No more events to execute in this ED.");
+		}
+		
+		return computeKPIs(ed);
+	}
+	
 	/**
 	 * Simulation of a given Ed over a given Time.
 	 * Computes the KPIs of the Ed 
@@ -60,14 +79,17 @@ public class SimErgy implements Serializable{
 	 * @param endTime the end time
 	 * @return the array list containing : (number of patients released, number of patients, DTDT, LOS).
 	 */
-	public ArrayList<Double> simulation(EmergencyDept ed, int endTime){
-		double simTime = 0;
+	public ArrayList<Double> simulation(EmergencyDept ed, int endTime, boolean enableGen){
+		ed.getPatientGenerator().setEnableGen(enableGen);
+		double simTime = ed.getTime();
 		ArrayList<Event> eventQueue = new ArrayList<Event>();
 		ArrayList<Integer> enabledEvents = new ArrayList<Integer>();
-		initializeSimErgy(ed);
+		if(enableGen){
+			initializeSimErgy(ed);
+		}
 		enabledEvents = updateEnabledEvents(ed);
 		eventQueue = updateEventQueue(enabledEvents, ed);
-		while(simTime < endTime){
+		while(simTime < endTime && eventQueue.size()!=0){
 			Event e = eventQueue.get(0);
 			executeEvent(e);
 			simTime = e.getOccurenceTime();

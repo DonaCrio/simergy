@@ -106,8 +106,8 @@ public class Patient implements Serializable{
  */
 @Override
 	public String toString() {
-		return "[id=" + id + ", severityLevel=" + severityLevel + ", state=" + state + ", healthInsurance=" + healthInsurance + ", charges=" + charges + (physician==null?"":", physicianID="
-				+ physician.getId());
+		return "[name=" + name + ", surname=" + surname + ", severityLevel=" + severityLevel + ", state=" + state + ", healthInsurance=" + healthInsurance + ", charges=" + charges + (physician==null?"":", physicianID="
+				+ physician.getId()) + "]";
 	}
 
 	/**

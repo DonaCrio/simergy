@@ -41,6 +41,9 @@ public abstract class HealthService extends NonHumanResource{
 	 * @param patient the patient
 	 */
 	public void newArrival(Patient patient){
+		if(waitingQueue.size()==0){
+			currentPatient = patient;
+		}
 		waitingQueue.add(patient);
 	}
 	

@@ -22,6 +22,7 @@ public class PatientGenerator implements Serializable{
 	
 	private EmergencyDept ed;
 	private HashMap<SeverityLevel,ProbabilityDistribution> distributions;
+	private boolean enableGen; // =variable utilisée pour activer ou non la génération automatique de patients dans l'ED
 	
 	/**
 	 * Instantiates a new patient generator.
@@ -73,7 +74,9 @@ public class PatientGenerator implements Serializable{
 	 * @return the next patients
 	 */
 	public void giveNewPatient(double time, SeverityLevel lvl){
-		ed.addWorkflow(new Workflow(ed, new Patient(lvl), time+distributions.get(lvl).generateSample()));
+		if(enableGen){
+			ed.addWorkflow(new Workflow(ed, new Patient(lvl), time+distributions.get(lvl).generateSample()));
+		}
 	}
 
 	/**
@@ -82,6 +85,14 @@ public class PatientGenerator implements Serializable{
 	 */
 	public HashMap<SeverityLevel, ProbabilityDistribution> getDistributions() {
 		return distributions;
+	}
+
+	/**
+	 * Toogles auto-generation of patients
+	 * @param enabeGen the boolean
+	 */
+	public void setEnableGen(boolean enableGen) {
+		this.enableGen = enableGen;
 	}
 	
 }

@@ -149,7 +149,7 @@ public abstract class Event implements EventOperations, Serializable{
 	 */
 	@Override
 	public String toString() {
-		return "Event [id=" + id + ", name=" + name + ", type=" + type + ", startTime=" + startTime + ", endTime=" + endTime + ", patient=" + workflow.getPatient().getId()
+		return "Event [name=" + name + ", type=" + type + ", startTime=" + startTime + ", endTime=" + endTime + ", patient=" + workflow.getPatient().getId()
 				+ ", state=" + state + "]";
 	}
 	
