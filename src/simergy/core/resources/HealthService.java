@@ -69,27 +69,6 @@ public abstract class HealthService extends NonHumanResource{
 	}
 
 	/**
-	 * Creates then sets a new distribution.
-	 * 
-	 * @param type the distribution's type
-	 * @param params the distribution's params
-	 * @return true if it's a success, false if it's not.
-	 */
-	public boolean createDistribution(String type, ArrayList<Double> params){
-		if(type.equalsIgnoreCase("DETERMINISTIC") && params.size()==1){
-			distribution = new Deterministic(params.get(0));
-			return true;
-		}else if(type.equalsIgnoreCase("EXPONENTIAL") && params.size()==1){
-			distribution = new Exponential(params.get(0));
-			return true;
-		}else if(type.equalsIgnoreCase("UNIFORM") && params.size()==2){
-			distribution = new Uniform(params.get(0),params.get(1));
-			return true;
-		}else{
-			return false;
-		}
-	}
-	/**
 	 * Gets the waiting queue.
 	 *
 	 * @return the waiting queue

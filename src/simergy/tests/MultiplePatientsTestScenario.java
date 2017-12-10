@@ -21,7 +21,7 @@ public class MultiplePatientsTestScenario {
 
 	@Test
 	public void PassIfTwoPatientsAreTreatedThenReleased() {
-		SimErgy sys = new SimErgy();
+		SimErgy sys = new SimErgy("");
 		EmergencyDept ed = new EmergencyDept("myED");
 		sys.addED(ed);
 		ed.addResource(new Physician(0, "Said","Sammy"));

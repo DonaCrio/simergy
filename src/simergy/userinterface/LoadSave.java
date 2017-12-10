@@ -6,6 +6,7 @@ import simergy.core.system.SimErgy;
 public class LoadSave {
 
 	public static void saveSys(SimErgy sys, String fileName){
+		sys.setName(fileName);
 		if(fileName.contentEquals("")){
 			fileName = "SimErgy";
 			System.out.println("Default name has been set : SimErgy");
@@ -31,7 +32,7 @@ public class LoadSave {
 		SimErgy sys = null;
 		if(fileName.contentEquals("")){
 			System.out.println("A brand new SimErgy system has been created !");
-			return new SimErgy();
+			return new SimErgy("");
 		}
 		if(fileName.length()>4 && fileName.substring(fileName.length()-4,fileName.length()).equalsIgnoreCase(".SER")){
 			fileName = fileName.substring(0,fileName.length()-4);
@@ -46,10 +47,10 @@ public class LoadSave {
 			return sys;
 		}catch(IOException e){
 			System.out.println("ERROR : Save couldn't be loaded, a brand new SimErgy system has been created !\n");
-			return new SimErgy();
+			return new SimErgy("");
 		}catch(ClassNotFoundException e){
 			System.out.println("EClassNotFoundException, a brand new SimErgy system has been created !\n");
-			return new SimErgy();
+			return new SimErgy("");
 		}
 		
 		

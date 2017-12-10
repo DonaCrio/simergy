@@ -25,12 +25,14 @@ public class SimErgy implements Serializable{
 
 	private static final long serialVersionUID = -412240945789262714L;
 
+	private String name;
 	private HashMap<String,EmergencyDept> EDs;
 	
 	/**
 	 * Instantiates a new system.
 	 */
-	public SimErgy() {
+	public SimErgy(String name) {
+		this.name = name;
 		this.EDs = new HashMap<String,EmergencyDept>();
 	}
 
@@ -265,5 +267,12 @@ public class SimErgy implements Serializable{
 		}
 		return computeKPIs(ed);
 	}
+
+	public String getName() {
+		return name;
+	}
 	
+	public void setName(String name){
+		this.name = name;
+	}
 }
