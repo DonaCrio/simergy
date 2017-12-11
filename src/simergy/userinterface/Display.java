@@ -1,7 +1,9 @@
 package simergy.userinterface;
 
+import java.util.ArrayList;
 import java.util.StringTokenizer;
 
+import simergy.core.events.Event;
 import simergy.core.patients.Patient;
 import simergy.core.resources.Resource;
 import simergy.core.system.EmergencyDept;
@@ -45,6 +47,13 @@ public class Display implements Command{
 				res += "\n\n# Patients (" + ed.getPatients().size() + ") :";
 				for(Patient p : ed.getPatients()){
 					res += "\n### " + p;
+				}
+				ed.getPatientGenerator().setEnableGen(false);
+				ArrayList<Integer> enabledEvents = clui.getSys().updateEnabledEvents(ed);
+				ArrayList<Event> eventQueue = clui.getSys().updateEventQueue(enabledEvents, ed);
+				res += "\n\n# Events in queue (" + eventQueue.size() + ") :";
+				for(Event e : eventQueue){
+					res += "\n### " + e;
 				}
 				System.out.println(res);
 				

@@ -9,6 +9,6 @@ public class CurrentSave implements Command{
 	}
 	
 	public void execute(){
-		System.out.println("Current save : " + clui.getSys().getName() + ".ser");
+		System.out.println(clui.getSys()==null?"There is no current save.":"Current save : " + clui.getSys().getName() + ".ser");
 	}
 }

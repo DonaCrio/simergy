@@ -62,19 +62,19 @@ public class CommandFactory {
 				return new AddPhysi(st,clui);
 				
 			}else if(cmd.contentEquals("setL1arrivalDist")){
-				return new NullCommand();
+				return new SetL1ArrivalDist(st,clui);
 				
 			}else if(cmd.contentEquals("setL2arrivalDist")){
-				return new NullCommand();
+				return new SetL2ArrivalDist(st,clui);
 				
 			}else if(cmd.contentEquals("setL3arrivalDist")){
-				return new NullCommand();
+				return new SetL3ArrivalDist(st,clui);
 				
 			}else if(cmd.contentEquals("setL4arrivalDist")){
-				return new NullCommand();
+				return new SetL4ArrivalDist(st,clui);
 				
 			}else if(cmd.contentEquals("setL5arrivalDist")){
-				return new NullCommand();
+				return new SetL4ArrivalDist(st,clui);
 				
 			}else if(cmd.contentEquals("addPatient")){
 				return new AddPatient(st,clui);

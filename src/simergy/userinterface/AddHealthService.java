@@ -48,7 +48,7 @@ public abstract class AddHealthService implements Command{
 				((HealthService)service).setDistribution(ProbabilityDistribution.createDistribution(distributionType, params));
 				ed.addResource(service);
 				System.out.println(service.getName() + " was successfully added to " + ed.getName() 
-					+ " with the given distribution");
+				+ " with the given distribution");
 			}else{
 				System.out.println("ERROR : This ED doesn't exists.");
 			}
