@@ -3,13 +3,15 @@ package simergy.userinterface.intefaces;
 import java.io.File;
 import java.util.Scanner;
 
+import simergy.core.system.EmergencyDept;
 import simergy.core.system.SimErgy;
-import simergy.userinterface.cmdfactory.CommandFactory;
+import simergy.userinterface.clui.CommandFactory;
 
 public abstract class UserInterface {
 
 	protected CommandFactory commandFactory;
 	protected SimErgy sys;
+	protected EmergencyDept currentED;
 	protected File currentDirectory;
 	protected Scanner sc;
 	protected boolean run;
@@ -57,6 +59,14 @@ public abstract class UserInterface {
 
 	public void setCommandFactory(CommandFactory commandFactory) {
 		this.commandFactory = commandFactory;
+	}
+
+	public EmergencyDept getCurrentED() {
+		return currentED;
+	}
+
+	public void setCurrentED(EmergencyDept currentED) {
+		this.currentED = currentED;
 	}
 	
 }
