@@ -1,12 +1,20 @@
 package simergy.userinterface.intefaces;
 
+import java.awt.BorderLayout;
+
 import javax.swing.JFrame;
+
+import simergy.core.system.SimErgy;
+import simergy.userinterface.guicomponents.MainPanel;
+import simergy.userinterface.guicomponents.MenuBar;
+import simergy.userinterface.guicomponents.MessagePanel;
 
 public class GraphicalUserInterface extends UserInterface implements Runnable{
 
 	private JFrame frame;
 	private MenuBar menuBar;
 	private MainPanel mainPanel;
+	private MessagePanel messagePanel;
 	
 	public GraphicalUserInterface(){
 		
@@ -14,10 +22,15 @@ public class GraphicalUserInterface extends UserInterface implements Runnable{
 		frame.setTitle("SimErgy");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainPanel = new MainPanel(this);
-		frame.setContentPane(mainPanel);
+		frame.getContentPane().add(mainPanel,BorderLayout.CENTER);
 		
 		menuBar = new MenuBar(this);
 		frame.setJMenuBar(menuBar);
+		
+		messagePanel = new MessagePanel();
+		frame.add(messagePanel,BorderLayout.SOUTH);
+		
+		sys = new SimErgy("default");
 	}
 	
 	@Override
@@ -53,5 +66,13 @@ public class GraphicalUserInterface extends UserInterface implements Runnable{
 
 	public void setMainPanel(MainPanel mainPanel) {
 		this.mainPanel = mainPanel;
+	}
+
+	public MessagePanel getMessagePanel() {
+		return messagePanel;
+	}
+
+	public void setMessagePanel(MessagePanel messagePanel) {
+		this.messagePanel = messagePanel;
 	}
 }

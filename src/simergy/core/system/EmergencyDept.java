@@ -13,7 +13,6 @@ import simergy.core.resources.*;
 import simergy.exceptions.*;
 import simergy.core.patients.*;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class EmergencyDept.
  * 
@@ -78,8 +77,6 @@ public class EmergencyDept implements Serializable{
 		resources.put("TRANSPORTER",new ArrayList<Resource>());
 		resources.put("BOXROOM",new ArrayList<Resource>());
 		resources.put("SHOCKROOM",new ArrayList<Resource>());
-		resources.put("WAITINGROOM",new ArrayList<Resource>());
-		resources.put("STRETCHER",new ArrayList<Resource>());
 		resources.put("MRI",new ArrayList<Resource>());
 		resources.put("BLOODTEST",new ArrayList<Resource>());
 		resources.put("RADIOGRAPHY",new ArrayList<Resource>());

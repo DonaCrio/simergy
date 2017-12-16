@@ -9,7 +9,7 @@ import org.junit.Test;
 import simergy.core.events.Event;
 import simergy.core.system.EmergencyDept;
 import simergy.core.system.SimErgy;
-import simergy.userinterface.intefaces.LoadSave;
+import simergy.userinterface.commandfactory.LoadSave;
 
 public class TimeProgressionTest {
 

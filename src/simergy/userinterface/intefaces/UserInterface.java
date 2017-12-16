@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 import simergy.core.system.EmergencyDept;
 import simergy.core.system.SimErgy;
-import simergy.userinterface.clui.CommandFactory;
+import simergy.userinterface.commandfactory.CommandFactory;
 
 public abstract class UserInterface {
 
