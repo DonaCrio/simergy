@@ -2,6 +2,7 @@ package simergy.userinterface.commandfactory;
 
 import java.util.StringTokenizer;
 
+import simergy.userinterface.intefaces.LoadSave;
 import simergy.userinterface.intefaces.UserInterface;
 
 public class Save implements Command{

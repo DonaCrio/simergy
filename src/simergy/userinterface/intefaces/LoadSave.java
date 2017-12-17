@@ -1,4 +1,4 @@
-package simergy.userinterface.commandfactory;
+package simergy.userinterface.intefaces;
 
 import java.io.*;
 import simergy.core.system.SimErgy;

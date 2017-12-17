@@ -1,9 +1,11 @@
 package simergy.userinterface.guicomponents;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 
 import simergy.userinterface.intefaces.GraphicalUserInterface;
@@ -16,19 +18,22 @@ public class MainPanel extends JPanel{
 	private JTabbedPane tabbedPane;
 	private DisplayPane displayPane;
 
-	/**
-	 * Constructor used to intensity the first MainPanel at start.
-	 */
 	public MainPanel(GraphicalUserInterface gui){
 		super();
 		this.gui = gui;
 		setLayout(new GridLayout());
-		tabbedPane = new JTabbedPane();
+		
+		tabbedPane = new TabBackground();
+		tabbedPane.setPreferredSize(new Dimension(500,500));
 		this.add(tabbedPane);
+		
 		displayPane = new DisplayPane();
 		displayPane.buildED(null);
-		this.add(displayPane);
+		displayPane.setPreferredSize(new Dimension(500,500));
+		this.add(new JScrollPane(displayPane));
+		
 		this.setPreferredSize(new Dimension(1000,500));
+		setBackground(Color.WHITE);
 	}
 	
 	public void display(String message){

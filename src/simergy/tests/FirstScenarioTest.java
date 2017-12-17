@@ -45,6 +45,7 @@ public class FirstScenarioTest {
 		patient.setHealthInsurance(HealthInsurance.SILVER);
 		ed.addWorkflow(new Workflow(ed,patient,0));
 		sys.simulationNoAutomation(ed, 500);
+		System.out.println(ed.getWorkflows().get(0).getCurrentEvent().getType());
 		assertTrue(ed.getWorkflows().get(0).getCurrentEvent().getType()=="OUTCOME");
 		System.out.println("Time = "+ ed.getTime());
 		System.out.println(ed.getWorkflows().get(0).getCurrentEvent().toString()+"\n");

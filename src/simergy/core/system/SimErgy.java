@@ -257,13 +257,13 @@ public class SimErgy implements Serializable{
 		ArrayList<Integer> enabledEvents = new ArrayList<Integer>();
 		enabledEvents = updateEnabledEvents(ed);
 		eventQueue = updateEventQueue(enabledEvents, ed);
-		while(simTime < endTime){
-			Event e = eventQueue.get(0);
-			executeEvent(e);
-			simTime = e.getOccurenceTime();
-			ed.setTime(simTime);
-			enabledEvents = updateEnabledEvents(ed);
-			eventQueue = updateEventQueue(enabledEvents, ed);
+		while(simTime < endTime && eventQueue.size()!=0){
+				Event e = eventQueue.get(0);
+				executeEvent(e);
+				simTime = e.getOccurenceTime();
+				ed.setTime(simTime);
+				enabledEvents = updateEnabledEvents(ed);
+				eventQueue = updateEventQueue(enabledEvents, ed);
 		}
 		return computeKPIs(ed);
 	}
