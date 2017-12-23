@@ -12,11 +12,11 @@ import simergy.core.distributions.*;
 public enum SeverityLevel {
 
 
-	L1("Resuscitation",0.00069), // 2 par jour
-	L2("Emergency",0.00138), // 5 par jour
-	L3("Urgent",0.00276), //10 par jour
-	L4("Less urgent",0.00276), //10 par jour
-	L5("Non-urgent",0.00276);//10 par jour
+	L1("Resuscitation",0.0014), // 2 par jour
+	L2("Emergency",0.0028), // 4 par jour
+	L3("Urgent",0.0112), //16 par jour
+	L4("Less urgent",0.0167), //24 par jour
+	L5("Non-urgent",0.0167);//24 par jour
 	
 	/** The distribution. */
 	public ProbabilityDistribution distribution;

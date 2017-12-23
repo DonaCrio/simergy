@@ -1,3 +1,7 @@
+/*
+ * @author Donatien Criaud
+ * 
+ */
 package simergy.userinterface.guicomponents;
 
 import java.awt.BorderLayout;
@@ -12,15 +16,35 @@ import simergy.core.patients.HealthInsurance;
 import simergy.core.patients.SeverityLevel;
 import simergy.userinterface.intefaces.GraphicalUserInterface;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class InputPatient.
+ */
 public class InputPatient extends InputTab{
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -290194176764468417L;
+	
+	/** The input name. */
 	private JTextField inputName;
+	
+	/** The input surname. */
 	private JTextField inputSurname;
+	
+	/** The severity level. */
 	private JComboBox<SeverityLevel> severityLevel;
+	
+	/** The health insurance. */
 	private JComboBox<HealthInsurance> healthInsurance;
+	
+	/** The ED name. */
 	private String EDName;
 
+	/**
+	 * Instantiates a new input patient.
+	 *
+	 * @param gui the gui
+	 */
 	public InputPatient(GraphicalUserInterface gui){
 		super("Add new Patient", "addPatient", gui);
 		this.EDName = gui.getCurrentED()==null?" ":gui.getCurrentED().getName();
@@ -51,6 +75,9 @@ public class InputPatient extends InputTab{
 		this.add(pan,BorderLayout.NORTH);
 	}
 	
+	/* (non-Javadoc)
+	 * @see simergy.userinterface.guicomponents.InputTab#computeParams()
+	 */
 	public String computeParams(){
 		return(" " + EDName + " " + inputName.getText() + " " + inputSurname.getText()
 		+ " " + severityLevel.getSelectedItem()+ " " + healthInsurance.getSelectedItem());

@@ -1,3 +1,7 @@
+/*
+ * @author Donatien Criaud
+ * 
+ */
 package simergy.userinterface.guicomponents;
 
 import java.awt.BorderLayout;
@@ -8,12 +12,26 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import simergy.userinterface.intefaces.GraphicalUserInterface;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class InputRoom.
+ */
 public class InputRoom  extends InputTab{
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -290194176764468417L;
+	
+	/** The room type. */
 	private JComboBox<String> roomType;
+	
+	/** The ED name. */
 	private String EDName;
 
+	/**
+	 * Instantiates a new input room.
+	 *
+	 * @param gui the gui
+	 */
 	public InputRoom(GraphicalUserInterface gui){
 		super("Add new room", "addRoom",gui);
 		this.EDName = gui.getCurrentED()==null?" ":gui.getCurrentED().getName();
@@ -28,6 +46,9 @@ public class InputRoom  extends InputTab{
 		this.add(pan,BorderLayout.NORTH);
 	}
 	
+	/* (non-Javadoc)
+	 * @see simergy.userinterface.guicomponents.InputTab#computeParams()
+	 */
 	public String computeParams(){
 		String choice = ((String)roomType.getSelectedItem());
 		if(choice.contentEquals("Box room")){

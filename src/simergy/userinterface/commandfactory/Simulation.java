@@ -1,3 +1,7 @@
+/*
+ * @author Donatien Criaud
+ * 
+ */
 package simergy.userinterface.commandfactory;
 
 import java.util.ArrayList;
@@ -7,16 +11,32 @@ import simergy.core.system.EmergencyDept;
 import simergy.core.system.SimErgy;
 import simergy.userinterface.intefaces.UserInterface;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Simulation.
+ */
 public class Simulation implements Command{
 
+	/** The st. */
 	private StringTokenizer st;
+	
+	/** The user interface. */
 	private UserInterface userInterface;
 	
+	/**
+	 * Instantiates a new simulation.
+	 *
+	 * @param st the st
+	 * @param userInterface the user interface
+	 */
 	public Simulation(StringTokenizer st, UserInterface userInterface){
 		this.st = st;
 		this.userInterface = userInterface;
 	}
 	
+	/* (non-Javadoc)
+	 * @see simergy.userinterface.commandfactory.Command#execute()
+	 */
 	public String execute(){
 		SimErgy sys = userInterface.getSys();
 		if(st.countTokens()==3){

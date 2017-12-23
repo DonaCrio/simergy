@@ -1,14 +1,28 @@
+/*
+ * @author Donatien Criaud
+ * 
+ */
 package simergy.userinterface.intefaces;
 
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CommandLineUserInterface.
+ */
 public class CommandLineUserInterface extends UserInterface{
 	
+	/**
+	 * Instantiates a new command line user interface.
+	 */
 	public CommandLineUserInterface(){
 		this.sc = new Scanner(System.in);
 	}
 	
+	/**
+	 * Run.
+	 */
 	public void run(){
 		
 		System.out.println("\n###################\n"
@@ -28,6 +42,11 @@ public class CommandLineUserInterface extends UserInterface{
 		}
 	}
 	
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args) {
 		CommandLineUserInterface clui = new CommandLineUserInterface();
 		clui.run();

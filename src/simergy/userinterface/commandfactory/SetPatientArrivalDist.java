@@ -1,3 +1,7 @@
+/*
+ * @author Donatien Criaud
+ * 
+ */
 package simergy.userinterface.commandfactory;
 
 import java.util.ArrayList;
@@ -9,18 +13,37 @@ import simergy.core.system.EmergencyDept;
 import simergy.core.system.PatientGenerator;
 import simergy.userinterface.intefaces.UserInterface;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SetPatientArrivalDist.
+ */
 public abstract class SetPatientArrivalDist implements Command{
 
+	/** The st. */
 	private StringTokenizer st;
+	
+	/** The user interface. */
 	private UserInterface userInterface;
+	
+	/** The lvl. */
 	private SeverityLevel lvl;
 	
+	/**
+	 * Instantiates a new sets the patient arrival dist.
+	 *
+	 * @param st the st
+	 * @param userInterface the user interface
+	 * @param lvl the lvl
+	 */
 	public SetPatientArrivalDist(StringTokenizer st, UserInterface userInterface, SeverityLevel lvl){
 		this.st = st;
 		this.userInterface = userInterface;
 		this.lvl = lvl;
 	}
 	
+	/* (non-Javadoc)
+	 * @see simergy.userinterface.commandfactory.Command#execute()
+	 */
 	public String execute(){
 		if(st.countTokens()>=3){
 			EmergencyDept ed = userInterface.getSys().getEDs().get(st.nextToken());
@@ -36,7 +59,8 @@ public abstract class SetPatientArrivalDist implements Command{
 					return("ERROR : <DistParams> must be integers or doubles.");
 				}
 				generator.getDistributions().put(lvl, ProbabilityDistribution.createDistribution(distributionType, params));
-				return("The arrival time has succesfully been associated with the given distribution.");
+				return("The arrival time has succesfully been associated with the given distribution : \n" 
+						+ generator.getDistributions().toString());
 			}else{
 				return("ERROR : This ED doesn't exists.");
 			}

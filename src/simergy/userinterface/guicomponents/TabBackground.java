@@ -1,3 +1,7 @@
+/*
+ * @author Donatien Criaud
+ * 
+ */
 package simergy.userinterface.guicomponents;
 
 import java.awt.Dimension;
@@ -13,11 +17,21 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class TabBackground.
+ */
 public class TabBackground extends JTabbedPane{
 	
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -7606273163764299972L;
+	
+	/** The bg. */
 	private BufferedImage bg;
 
+    /**
+     * Instantiates a new tab background.
+     */
     public TabBackground() {
         try {
             bg = ImageIO.read(new File("img/indexSimErgy.jpg"));

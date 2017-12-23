@@ -95,4 +95,9 @@ public class PatientGenerator implements Serializable{
 		this.enableGen = enableGen;
 	}
 	
+	@Override
+	public String toString() {
+		return "PatientGenerator [distributions=" + distributions + "]";
+	}
+
 }

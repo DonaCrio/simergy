@@ -1,15 +1,32 @@
+/*
+ * @author Donatien Criaud
+ * 
+ */
 package simergy.userinterface.commandfactory;
 
 import java.util.StringTokenizer;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Help.
+ */
 public class Help implements Command{
 	
+	/** The st. */
 	private StringTokenizer st;
 	
+	/**
+	 * Instantiates a new help.
+	 *
+	 * @param st the st
+	 */
 	public Help(StringTokenizer st){
 		this.st = st;
 	}
 
+	/* (non-Javadoc)
+	 * @see simergy.userinterface.commandfactory.Command#execute()
+	 */
 	public String execute(){
 		
 		if(st.countTokens()==0){

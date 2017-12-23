@@ -1,3 +1,7 @@
+/*
+ * @author Donatien Criaud
+ * 
+ */
 package simergy.userinterface.guicomponents;
 
 import java.util.HashMap;
@@ -10,12 +14,26 @@ import simergy.core.system.EmergencyDept;
 import simergy.userinterface.commandfactory.CommandFactory;
 import simergy.userinterface.intefaces.GraphicalUserInterface;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class InputLoad.
+ */
 public class InputLoad {
 
+	/** The main panel. */
 	private MainPanel mainPanel;
+	
+	/** The factory. */
 	private CommandFactory factory;
+	
+	/** The file chooser. */
 	private JFileChooser fileChooser;
 	
+	/**
+	 * Instantiates a new input load.
+	 *
+	 * @param gui the gui
+	 */
 	public InputLoad(GraphicalUserInterface gui){
 		this.mainPanel = gui.getMainPanel();
 		this.factory = gui.getCommandFactory();
@@ -37,6 +55,11 @@ public class InputLoad {
 			
 	}
 	
+	/**
+	 * Compute params.
+	 *
+	 * @return the string
+	 */
 	public String computeParams(){
 		String fileName = fileChooser.getSelectedFile().getName();
 		return(" " + fileName);

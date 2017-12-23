@@ -1,3 +1,7 @@
+/*
+ * @author Donatien Criaud
+ * 
+ */
 package simergy.userinterface.guicomponents;
 
 import java.awt.BorderLayout;
@@ -12,18 +16,43 @@ import javax.swing.JPanel;
 import simergy.userinterface.commandfactory.CommandFactory;
 import simergy.userinterface.intefaces.GraphicalUserInterface;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class InputTab.
+ */
 public abstract class InputTab extends JPanel{
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 4458682304440431610L;
 	
+	/** The main panel. */
 	protected MainPanel mainPanel;
+	
+	/** The factory. */
 	protected CommandFactory factory;
+	
+	/** The name. */
 	protected String name;
+	
+	/** The cmd. */
 	protected String cmd;
+	
+	/** The validation. */
 	protected JButton validation;
+	
+	/** The cancel. */
 	protected JButton cancel;
+	
+	/** The obj. */
 	private InputTab obj;
 	
+	/**
+	 * Instantiates a new input tab.
+	 *
+	 * @param name the name
+	 * @param command the command
+	 * @param gui the gui
+	 */
 	public InputTab(String name, String command, GraphicalUserInterface gui){
 		obj = this;
 		this.name = name;
@@ -53,8 +82,16 @@ public abstract class InputTab extends JPanel{
 		this.add(pan,BorderLayout.SOUTH);
 	}
 	
+	/**
+	 * Compute params.
+	 *
+	 * @return the string
+	 */
 	public abstract String computeParams();
 
+	/* (non-Javadoc)
+	 * @see java.awt.Component#getName()
+	 */
 	public String getName() {
 		return name;
 	}

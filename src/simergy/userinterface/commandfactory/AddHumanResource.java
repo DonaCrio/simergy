@@ -1,3 +1,7 @@
+/*
+ * @author Donatien Criaud
+ * 
+ */
 package simergy.userinterface.commandfactory;
 
 import java.util.StringTokenizer;
@@ -7,18 +11,37 @@ import simergy.core.resources.Resource;
 import simergy.core.system.EmergencyDept;
 import simergy.userinterface.intefaces.UserInterface;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AddHumanResource.
+ */
 public abstract class AddHumanResource implements Command{
 
+	/** The st. */
 	private StringTokenizer st;
+	
+	/** The user interface. */
 	private UserInterface userInterface;
+	
+	/** The type. */
 	private String type;
 	
+	/**
+	 * Instantiates a new adds the human resource.
+	 *
+	 * @param st the st
+	 * @param userInterface the user interface
+	 * @param type the type
+	 */
 	public AddHumanResource(StringTokenizer st, UserInterface userInterface, String type){
 		this.st = st;
 		this.userInterface = userInterface;
 		this.type = type;
 	}
 	
+	/* (non-Javadoc)
+	 * @see simergy.userinterface.commandfactory.Command#execute()
+	 */
 	public String execute(){
 		if(st.countTokens()==1){
 			EmergencyDept ed = userInterface.getSys().getEDs().get(st.nextToken());

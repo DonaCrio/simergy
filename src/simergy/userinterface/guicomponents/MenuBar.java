@@ -1,3 +1,7 @@
+/*
+ * @author Donatien Criaud
+ * 
+ */
 package simergy.userinterface.guicomponents;
 
 import java.awt.event.ActionEvent;
@@ -11,11 +15,21 @@ import javax.swing.JOptionPane;
 
 import simergy.userinterface.intefaces.GraphicalUserInterface;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MenuBar.
+ */
 public class MenuBar extends JMenuBar{
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -1962445858262321682L;
 	
 
+	/**
+	 * Instantiates a new menu bar.
+	 *
+	 * @param gui the gui
+	 */
 	public MenuBar(GraphicalUserInterface gui){
 
 		JMenu menu1 = new JMenu("File");
@@ -163,8 +177,10 @@ public class MenuBar extends JMenuBar{
 		menu3.add(menu34);
 		this.add(menu3);
 		
-		JMenuItem menu4 = new JMenuItem("Simulation...");
-		menu4.addActionListener(new ActionListener(){
+		JMenu menu4 = new JMenu("Simulation");
+		JMenuItem menu41 = new JMenuItem("Run Simulation...");
+		JMenuItem menu42 = new JMenuItem("Set patient arrival time...");
+		menu41.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
 				if(gui.getCurrentED()!=null){
@@ -174,17 +190,20 @@ public class MenuBar extends JMenuBar{
 				}
 			}
 		});
-		this.add(menu4);
-		
-		JMenuItem menu5 = new JMenuItem("");
-		
-		JMenuItem menu6 = new JMenuItem("Help...");
-		menu6.addActionListener(new ActionListener(){
+		menu42.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-			
+				if(gui.getCurrentED()!=null){
+					gui.getMainPanel().addInputTab(new InputPatientArrival(gui));
+				}else{
+					gui.getMainPanel().display("ERROR : No Ed is selected");
+				}
 			}
 		});
+		
+		menu4.add(menu41);
+		menu4.add(menu42);
+		this.add(menu4);
 		
 	}
 }

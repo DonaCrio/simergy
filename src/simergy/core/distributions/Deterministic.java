@@ -27,4 +27,9 @@ public class Deterministic implements ProbabilityDistribution{
 	public double generateSample(){
 		return delta;
 	}
+
+	@Override
+	public String toString() {
+		return "Deterministic [delta=" + delta + "]";
+	}
 }

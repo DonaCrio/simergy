@@ -31,5 +31,10 @@ public class Uniform implements ProbabilityDistribution{
 		double a = Math.random();
 		return a*(r-l)+l;
 	}
+
+	@Override
+	public String toString() {
+		return "Uniform [l=" + l + ", r=" + r + "]";
+	}
 	
 }

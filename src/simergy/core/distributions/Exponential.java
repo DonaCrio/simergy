@@ -28,4 +28,9 @@ public class Exponential implements ProbabilityDistribution{
 		double r = Math.random();
 		return -Math.log(1-r)/this.lambda;
 	}
+
+	@Override
+	public String toString() {
+		return "Exponential [lambda=" + lambda + "]";
+	}
 }

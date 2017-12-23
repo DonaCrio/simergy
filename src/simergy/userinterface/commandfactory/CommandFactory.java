@@ -1,3 +1,7 @@
+/*
+ * @author Donatien Criaud
+ * 
+ */
 package simergy.userinterface.commandfactory;
 
 import java.util.StringTokenizer;
@@ -6,14 +10,30 @@ import simergy.core.system.SimErgy;
 import simergy.userinterface.intefaces.CommandLineUserInterface;
 import simergy.userinterface.intefaces.UserInterface;
 
+// TODO: Auto-generated Javadoc
+/**
+ * A factory for creating Command objects.
+ */
 public class CommandFactory {
 	
+	/** The user interface. */
 	private UserInterface userInterface;
 	
+	/**
+	 * Instantiates a new command factory.
+	 *
+	 * @param userInterface the user interface
+	 */
 	public CommandFactory(UserInterface userInterface){
 		this.userInterface = userInterface;
 	}
 
+	/**
+	 * Gets the command.
+	 *
+	 * @param st the st
+	 * @return the command
+	 */
 	public Command getCommand(StringTokenizer st){
 		if(userInterface.getSys()==null){
 			userInterface.setSys(new SimErgy("default"));
@@ -114,6 +134,11 @@ public class CommandFactory {
 		}
 	}
 
+	/**
+	 * Gets the user interface.
+	 *
+	 * @return the user interface
+	 */
 	public UserInterface getUserInterface() {
 		return userInterface;
 	}	

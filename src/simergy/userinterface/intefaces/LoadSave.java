@@ -1,10 +1,24 @@
+/*
+ * @author Donatien Criaud
+ * 
+ */
 package simergy.userinterface.intefaces;
 
 import java.io.*;
 import simergy.core.system.SimErgy;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class LoadSave.
+ */
 public class LoadSave {
 
+	/**
+	 * Save sys.
+	 *
+	 * @param sys the sys
+	 * @param fileName the file name
+	 */
 	public static void saveSys(SimErgy sys, String fileName){
 		sys.setName(fileName);
 		if(fileName.contentEquals("")){
@@ -28,6 +42,12 @@ public class LoadSave {
 		}
 	}
 	
+	/**
+	 * Load sys.
+	 *
+	 * @param fileName the file name
+	 * @return the sim ergy
+	 */
 	public static SimErgy loadSys(String fileName){
 		SimErgy sys = null;
 		if(fileName.contentEquals("")){

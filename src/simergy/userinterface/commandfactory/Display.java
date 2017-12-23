@@ -1,3 +1,7 @@
+/*
+ * @author Donatien Criaud
+ * 
+ */
 package simergy.userinterface.commandfactory;
 
 import java.util.ArrayList;
@@ -10,18 +14,36 @@ import simergy.core.system.EmergencyDept;
 import simergy.userinterface.intefaces.CommandLineUserInterface;
 import simergy.userinterface.intefaces.UserInterface;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Display.
+ */
 public class Display implements Command{
 
+	/** The st. */
 	private StringTokenizer st;
+	
+	/** The user interface. */
 	private UserInterface userInterface;
+	
+	/** The nb border. */
 	private int nbBorder;
 	
+	/**
+	 * Instantiates a new display.
+	 *
+	 * @param st the st
+	 * @param userInterface the user interface
+	 */
 	public Display(StringTokenizer st, UserInterface userInterface){
 		this.st = st;
 		this.userInterface = userInterface;
 		this.nbBorder = (userInterface instanceof CommandLineUserInterface)?23:19;
 	}
 	
+	/* (non-Javadoc)
+	 * @see simergy.userinterface.commandfactory.Command#execute()
+	 */
 	public String execute(){
 		
 		if(st.countTokens()==1){

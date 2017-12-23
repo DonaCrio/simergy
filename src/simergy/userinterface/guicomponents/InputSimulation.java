@@ -1,3 +1,7 @@
+/*
+ * @author Donatien Criaud
+ * 
+ */
 package simergy.userinterface.guicomponents;
 
 import java.awt.BorderLayout;
@@ -16,17 +20,38 @@ import javax.swing.JTextField;
 import simergy.userinterface.commandfactory.CommandFactory;
 import simergy.userinterface.intefaces.GraphicalUserInterface;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class InputSimulation.
+ */
 public class InputSimulation extends JPanel{
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 6426461615323688847L;
 
+	/** The main panel. */
 	protected MainPanel mainPanel;
+	
+	/** The factory. */
 	protected CommandFactory factory;
+	
+	/** The validation. */
 	protected JButton validation;
+	
+	/** The cancel. */
 	protected JButton cancel;
 	
+	/** The name. */
+	private String name;
+	
+	/**
+	 * Instantiates a new input simulation.
+	 *
+	 * @param gui the gui
+	 */
 	public InputSimulation(GraphicalUserInterface gui){
 		super();
+		this.name = "Run simulation";
 		this.mainPanel = gui.getMainPanel();
 		this.factory = gui.getCommandFactory();
 		setLayout(new BorderLayout());
@@ -87,5 +112,12 @@ public class InputSimulation extends JPanel{
 		});
 		panBot.add(b2);
 		this.add(panBot,BorderLayout.SOUTH);
+	}
+	
+	/* (non-Javadoc)
+	 * @see java.awt.Component#getName()
+	 */
+	public String getName() {
+		return name;
 	}
 }
