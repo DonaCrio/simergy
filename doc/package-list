@@ -5,4 +5,6 @@ simergy.core.resources
 simergy.core.system
 simergy.exceptions
 simergy.tests
-simergy.userinterface
+simergy.userinterface.commandfactory
+simergy.userinterface.guicomponents
+simergy.userinterface.intefaces
